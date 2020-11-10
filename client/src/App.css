@@ -1,0 +1,22 @@
+
+.main_column {
+  display: flex; 
+  flex-direction: column;
+  
+}
+
+.centre_row {
+  background-color: cadetblue;
+  display: flex;
+  flex-direction: column; 
+  height:85vh; 
+}
+
+@media (min-width: 736px) {
+  .centre_row {
+    flex-direction: row;
+  }
+
+
+}
+

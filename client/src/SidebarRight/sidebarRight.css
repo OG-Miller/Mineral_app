@@ -1,0 +1,22 @@
+.sidebarRight {
+  display: none;
+  /* flex:1.5; */
+  flex-direction: column;
+  height: 100%vh;
+
+ 
+ 
+}
+
+@media (min-width: 736px) {
+  .sidebarRight {
+    display: flex;
+    
+    background-color: #d2fdff;
+    min-width: fit-content;
+    max-width:250px ;
+    float: right;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

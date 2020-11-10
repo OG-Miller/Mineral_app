@@ -1,0 +1,26 @@
+.sidebarLeft {
+  display: none;
+  flex:1.5;
+  flex-direction: column;
+  height: 100%vh;  
+}
+
+@media (min-width: 736px) {
+  .sidebarLeft {
+    display: flex;
+    background-color:#d2fdff;
+    min-width: fit-content;
+    max-width:175px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+}
+
+/* @media (min-width: 800px) {
+  .sidebarLeft {
+    background-color: green;
+
+  }
+} */
+

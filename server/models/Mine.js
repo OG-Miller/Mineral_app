@@ -6,11 +6,12 @@ const MineSchema = mongoose.Schema({
    required: true,
   },
   bookmarkLink: {
-    type: String,
+    type: String, 
     required: true,
    },
-  body: Object,
+  body: String, // changed this from "object" to string
   author: String,
+  mineStatus: String,
 },
   { timestamps:true }
 );

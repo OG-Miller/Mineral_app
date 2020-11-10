@@ -1,0 +1,90 @@
+
+.read-main {
+  background-color: #687e8a ;
+  align-content: center;
+  display: flex;
+  flex: 7;
+  flex-direction: column;
+  padding: 10px;
+}
+
+@media (min-width: 736px) {
+  .read-main {
+    height: 100%;
+  }
+}
+
+.card {
+  background-color: lightblue;
+  margin:  25px;
+  padding:  30px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: auto;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+
+h1 {
+  font-size:x-large;
+  margin-bottom: 5px;
+  margin-top:0px;
+}
+
+
+a {
+  margin-bottom: 10px;
+  color:gray;
+  font-size: smaller;
+  font-weight: lighter;
+  text-decoration: inherit;
+  word-break: break-all;
+}
+
+
+.item-details {
+ display: flex;
+ align-items: baseline;
+ justify-content: space-between;
+}
+
+
+.created-at, .updated-at {
+  display: flex;
+  color: gray;
+  font-size: smaller;
+  font-weight: lighter;
+  word-break: break-all;
+  
+}
+
+
+.mine-id {
+  display: flex;
+  /* margin-bottom: 10px; */
+  margin-left: 15px;
+  color:gray;
+  font-size: smaller;
+  font-weight: lighter;
+  word-break: break-all;
+}
+
+
+.body {
+  margin-bottom: 20px;
+  font-size: medium;
+  color: black;
+}
+
+.controls{
+  
+  display: flex;
+  align-items: baseline;
+  justify-content: space-evenly;
+  margin-top: 15px
+}
+
+/* .edit-button, .delete-button{
+  ba
+} */

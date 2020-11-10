@@ -1,0 +1,34 @@
+.mineLink_container {
+  color: rgb(48, 4, 4);
+  background-color: rgb(217, 229, 235);
+  padding: 20px;
+  margin: 10px; 
+  flex:7;
+  overflow: hidden;
+}
+
+.mine-id{
+  color: gray;
+  font-size: smaller;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  float: right;
+}
+
+.bookmarkLink{
+  color: black;
+  font-size: x-small;
+  font-weight: lighter;
+}
+
+.createdAt{
+  color: gray;
+  font-size: smaller;
+  
+  
+}
+
+.title {
+  margin-top: 0px;
+  word-break: keep-all;
+}

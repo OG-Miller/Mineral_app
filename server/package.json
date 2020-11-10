@@ -2,7 +2,7 @@
   "name": "test_mern",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },
@@ -15,4 +15,5 @@
     "mongoose": "^5.10.11",
     "nodemon": "^2.0.6"
   }
+  
 }

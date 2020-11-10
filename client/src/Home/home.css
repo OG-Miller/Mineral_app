@@ -1,0 +1,25 @@
+.home-main{
+  background-color: #687e8a ;
+  align-content: center;
+  display: flex;
+  flex: 7;
+  flex-direction: column;
+  padding: 10px;
+  
+
+}
+
+@media (min-width: 736px) {
+  .home-main {
+    height: 100%;
+  }
+
+
+}
+
+.bookmarkLink{
+  color: gray;
+  
+  font-size: medium;
+  font-weight: lighter ;
+}

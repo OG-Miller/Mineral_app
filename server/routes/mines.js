@@ -1,42 +1,50 @@
-const { json } = require('express');
+// const { json } = require('express');
 const express = require('express');
 const router = express.Router();
 const Mine = require('../models/Mine'); 
 
 // gets back all the mines
-router.get('/', async (req, res) => {
-  try{
+router.get('/mines', async (req, res) => {
+  try {
     const mines = await Mine.find();// append .limit etc to not return every mine
+    console.log(mines);
     res.json(mines);
-  }catch(err){
-    err.json({ message:err })
-  }
+    
+    // console.log("mines here: " + mines);///test
+  } catch(err){
+    res.json({ message: err })
+  } return;
+
 });
-
-// creates a mine
-router.post('/', async (req, res) => {
-  const mine = new Mine({
-    title: req.body.title,
-    bookmarkLink: req.body.bookmarkLink
-  });
-  try{
-    const savedMine = await mine.save();
-    res.json(savedMine);
-  }catch(err){
-    res.json({message: err})
-  }
-
-})
 
 //find specific mine  - 
 router.get('/:mineId', async (req, res) => {
   try {
     const mine = await Mine.findById(req.params.mineId);   //we can use the Model attributes to search/filter
-    res.json(mine);       
+    console.log(mine);      
+    res.json(mine); 
   } catch(err) {
     res.json({message: err});
-  }
+  } 
 });
+
+
+// creates a mine
+router.post('/', async (req, res) => {
+  const mine = new Mine({
+    title: req.body.title,
+    bookmarkLink: req.body.bookmarkLink,
+    body:req.body.body // added this
+  });
+  try{
+    const savedMine = await mine.save();
+    console.log(res.json(savedMine));
+  }catch(err){
+    res.json({message: err})
+  } 
+
+})
+
 
 
 //delete post
@@ -46,7 +54,7 @@ router.delete('/:mineId', async (req, res) => {
    res.json(deletedMine);
    } catch(err) {
    res.json({message: err});
- }
+ } 
  
 })
 
@@ -60,7 +68,7 @@ router.patch('/:mineId', async (req, res) => {
       res.json(updatedMine);
   } catch(err) {
     res.json({ message:err })
-  }
+  } 
 });
 
 
