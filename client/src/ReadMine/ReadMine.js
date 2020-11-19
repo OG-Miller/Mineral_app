@@ -55,8 +55,9 @@ const ReadMine = () => {
     setShowNotes(true);
   }
   
-  const passedEdit = () => {
+  const passedEdit = (e) => {
     console.log("edit worked");
+    console.log(e.target.parentElement.parentElement.childNodes[2].innerHTML);
     //here we render the form again but with values filled.
     // data will come from 
   }
@@ -64,18 +65,16 @@ const ReadMine = () => {
 
 ///////// /////////// ////////// ////////// ///////// ////////// /////////// ////////// ////////// //////////
 
-  function passedDelete()  {
-    
+  function passedDelete(e)  {
     console.log("delete worked");
+    console.log(e.target.parentElement.parentElement.childNodes[2].innerHTML);
+
     //delete one note from array by id
      //1: get id from click
      
-     console.log(e);
+    //  console.log();
   }
-  const doThis = (e) => {
-
-    console.log(e.target);
-  }
+ 
   
   //below taken from "add a note"
   // const handleAddNote = () => {
@@ -99,8 +98,9 @@ const ReadMine = () => {
   
 ///////// /////////// ////////// ////////// ////////// ///////// /////////// ////////// ////////// //////////
   
-  const passedAdd = () => {
+  const passedAdd = (e) => {
     console.log("Add worked");
+    console.log(e.target.parentElement.parentElement.childNodes[2].innerHTML);
     setIsShow(true);
   }
   
@@ -128,13 +128,13 @@ const ReadMine = () => {
     
      
      
-     {  notesArray.map( ( { _id, link, title, note} ) => {
+     {  notesArray.map( ( { _id, link, title, note, onChildClickDelete} ) => {
       return (
         <NoteCard
-        onClick={e => doThis(e)}
-        passAdd={passedAdd()}
-        passDelete={passedDelete}//this will delete the note -> delete the note from db
-        passEdit={passedEdit}//this will open NewNoteForm with previous data inserted and editable -> http patch the data on db
+        // testButton={console.log(testButton)}
+        passAdd={e => passedAdd(e)}
+        passDelete={e => passedDelete(e)}//this will delete the note -> delete the note from db
+        passEdit={e => passedEdit(e)}//this will open NewNoteForm with previous data inserted and editable -> http patch the data on db
         key={_id}
         _id={_id}
         link={link}

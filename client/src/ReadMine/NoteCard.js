@@ -1,22 +1,27 @@
-import React from 'react';
-import "./noteCard.css"
-// import './noteCard.css';
+import React, { useEffect, useState } from 'react';
+import "./noteCard.css";
 
 
 
 const NoteCard = (props) => {
   
+  const [ testButton, setTestButton ] = useState('');
+  
+ useEffect( () => {
+  //  console.log(testButton);
+  },[testButton]
+ )
 
-  function passedEdit() {
-    props.passEdit();
+  function passedEdit(e) {
+    props.passEdit(e);
   }
   
-  function passedDelete() {
-    props.passDelete();
+  function passedDelete(e) {
+   props.passDelete(e);
   }
 
-  function passedAdd() {
-    props.passAdd();
+  function passedAdd(e) {
+    props.passAdd(e);
   }
 
 
@@ -33,9 +38,10 @@ const NoteCard = (props) => {
           <span value="edit" onClick={passedEdit}>Edit</span>
           <span value="delete" onClick={passedDelete}>Delete</span>
           <span value="add" onClick={passedAdd}>Add</span>
+          {/* <span type="button" onClick={() => setTestButton(e.target.parentElement.parentElement.childNodes[2].innerHTML)} value={testButton}  testButton={testButton}>TestButton</span> */}
          </div>
         </div>
-
+       
     </div>
   )
 }

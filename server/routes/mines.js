@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
 
 
 
-//delete post
+//delete entire mine
 router.delete('/:mineId', async (req, res) => {
  try{
    const deletedMine = await Mine.deleteOne({_id: req.params.mineId});
@@ -57,6 +57,16 @@ router.delete('/:mineId', async (req, res) => {
  } 
  
 })
+
+// //try delete a specific note by id
+// router.patch('/:mineId', async (req, res) => {
+//   try {
+//     const deletedNote = await Mine.update(
+//       { _id: req.params.mineId },
+//       { $pull: { notes: req.body._id } }
+//     )
+//   }
+// })
 
 //update a post
 router.patch('/:mineId', async (req, res) => {
@@ -72,7 +82,7 @@ router.patch('/:mineId', async (req, res) => {
 });
 
 
-//try add data to array
+//add note to notes array
 router.patch('/:mineId/add', async (req, res) => {
   try{
     const addedNote = await Mine.updateOne(
