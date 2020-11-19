@@ -2,27 +2,33 @@
 .read-main {
   background-color: #687e8a ;
   align-content: center;
-  display: flex;
+  /* height:100vh; */
+  display: flexbox;
   flex: 7;
   flex-direction: column;
   padding: 10px;
+  overflow: scroll;
+  height: fit-content;
 }
 
 @media (min-width: 736px) {
   .read-main {
-    height: 100%;
+    height: fit-content;
   }
 }
+
 
 .card {
   background-color: lightblue;
   margin:  25px;
+  margin-bottom: 0px;
   padding:  30px;
   display: flex;
   flex-direction: column;
   flex-wrap: auto;
   overflow: auto;
   word-wrap: break-word;
+  min-height: fit-content;
 }
 
 
@@ -84,7 +90,3 @@ a {
   justify-content: space-evenly;
   margin-top: 15px
 }
-
-/* .edit-button, .delete-button{
-  ba
-} */

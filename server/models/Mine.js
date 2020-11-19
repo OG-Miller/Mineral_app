@@ -9,7 +9,15 @@ const MineSchema = mongoose.Schema({
     type: String, 
     required: true,
    },
-  body: String, // changed this from "object" to string
+  body: String, // changed this from "object" to string(working)
+  notes:[
+    {
+      
+      title: String,
+      link: String,
+      note: String
+    }
+  ],
   author: String,
   mineStatus: String,
 },
@@ -19,3 +27,4 @@ const MineSchema = mongoose.Schema({
 module.exports = mongoose.model('Mine', MineSchema);
 
 
+ 

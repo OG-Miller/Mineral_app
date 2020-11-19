@@ -2,7 +2,7 @@
   display: none;
   /* flex:1.5; */
   flex-direction: column;
-  height: 100%vh;
+  height: 100vh;
 
  
  
@@ -10,9 +10,9 @@
 
 @media (min-width: 736px) {
   .sidebarRight {
-    display: flex;
-    
-    background-color: #d2fdff;
+    display: inline-flex;
+    height: 100vh;
+    background-image:linear-gradient( #d2fdff, white);
     min-width: fit-content;
     max-width:250px ;
     float: right;

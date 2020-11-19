@@ -32,7 +32,7 @@ const App = () => {
               </Switch>
             <SidebarRight />
           </div>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Router>
     </DataProvider>  

@@ -6,7 +6,8 @@
 }
 
 .centre_row {
-  background-color: cadetblue;
+  background-color: #687e8a ;
+  
   display: flex;
   flex-direction: column; 
   height:85vh; 

@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
   const mine = new Mine({
     title: req.body.title,
     bookmarkLink: req.body.bookmarkLink,
-    body:req.body.body // added this
+    body:req.body.body 
   });
   try{
     const savedMine = await mine.save();
@@ -69,6 +69,28 @@ router.patch('/:mineId', async (req, res) => {
   } catch(err) {
     res.json({ message:err })
   } 
+});
+
+
+//try add data to array
+router.patch('/:mineId/add', async (req, res) => {
+  try{
+    const addedNote = await Mine.updateOne(
+      { _id: req.params.mineId },
+      { $push: { notes:
+        [
+        {
+          title: req.body.title,
+          link: req.body.link,
+          note: req.body.note
+        } ]
+      }}
+    );
+    console.log(req.body);
+    res.json(addedNote);
+  } catch(err) {
+    res.json({message:err})
+  }
 });
 
 

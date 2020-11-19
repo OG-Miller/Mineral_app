@@ -13,7 +13,7 @@ function Home() {
   const fetchAllMines = async () => {
     const allMinesResponse = await fetch('http://localhost:5000/mines');
     const jsonResponse = await allMinesResponse.json();
-    console.log(jsonResponse);
+    // console.log(jsonResponse);
     setMinesData(jsonResponse);  
   };
      
@@ -95,13 +95,12 @@ const handleMineLinkClick = () => {
       minesData.map(
         mine => 
             <MineLink
-            
             onClick={handleMineLinkClick}
             key={mine._id}
             _id={mine._id}
             createdAt={mine.createdAt}
             title={mine.title}
-            bookmarkLink={mine.bookmarkLink.length <40? mine.bookmarkLink  : mine.bookmarkLink.substr(0,40) + "..."}  
+            bookmarkLink={mine.bookmarkLink.length < 40? mine.bookmarkLink  : mine.bookmarkLink.substr(0,40) + "..."}  
             />
       ) 
     }

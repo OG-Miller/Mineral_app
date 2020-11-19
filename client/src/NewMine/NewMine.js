@@ -20,11 +20,7 @@ const NewMine = () => {
   const handleCreateMine = (e) => {
     console.log(mineStatus);
     const newMineData = { title:newMineTitle , body:newMineBody, bookmarkLink: newMineLink , mineStatus: mineStatus};
-        // "title": newMineData.title,
-        // "bookmarkLink": newMineData.link,
-        // "mineStatus": "",
-        // "body":""
-      // };
+      
 
     let options = {
       method: 'POST',
@@ -41,39 +37,42 @@ const NewMine = () => {
 
 
   return(
+   
     <div className="new-mine-main">
-      
-      <input className="link-input" placeholder="Link" value={newMineLink} required onChange={(e) => setNewMineLink(e.target.value)}></input>
-      <input className="title-input" placeholder="Title" value={newMineTitle} required onChange={(e) => setNewMineTitle(e.target.value)}></input>
-      <textarea
-      placeholder="Note"
-      label="Initial thoughts"
-      type="text"
-      className="body-input" 
-      maxLength="600"
-      value={newMineBody}
-      onChange={(e) => setNewMineBody(e.target.value)}>
-      </textarea>
-      
-      <hr/>
-      <form>
-        <label for="polished">Polished  </label>
-        <input type="radio" name="option" value={"polished"}
-        onChange={(e) => setMineStatus(e.target.value)}/>
+       
+      <div className="new-mine-form">
+        <input className="link-input" placeholder="Link" value={newMineLink} required onChange={(e) => setNewMineLink(e.target.value)}></input>
+        <input className="title-input" placeholder="Title" value={newMineTitle} required onChange={(e) => setNewMineTitle(e.target.value)}></input>
+        <textarea
+        placeholder="Note"
+        label="Initial thoughts"
+        type="text"
+        className="body-input" 
+        maxLength="600"
+        value={newMineBody}
+        onChange={(e) => setNewMineBody(e.target.value)}>
+        </textarea>
         
-        <label for="cutting">  Cutting  </label>
-        <input type="radio" name="option"  value={"cutting"}
-        onChange={(e) => setMineStatus(e.target.value)}/>
-        
-        <label for="digging">  Digging  </label>
-        <input type="radio" name="option"  value={"digging"}
-        onChange={(e) => setMineStatus(e.target.value)}/>
-      <br/>
-      <br/>
-      </form>
-      <Link to={'/'} style={{textDecoration: 'none'}}>
-        <span className="submit-button" onClick={handleCreateMine}>Start Mine!</span>
-      </Link>
+        <hr/>
+        <form>
+          <label for="polished">Polished  </label>
+          <input type="radio" name="option" value={"polished"}
+          onChange={(e) => setMineStatus(e.target.value)}/>
+          
+          <label for="cutting">  Cutting  </label>
+          <input type="radio" name="option"  value={"cutting"}
+          onChange={(e) => setMineStatus(e.target.value)}/>
+          
+          <label for="digging">  Digging  </label>
+          <input type="radio" name="option"  value={"digging"}
+          onChange={(e) => setMineStatus(e.target.value)}/>
+        <br/>
+        <br/>
+        </form>
+        <Link to={'/'} style={{textDecoration: 'none'}}>
+          <span className="submit-button" onClick={handleCreateMine}>Start Mine!</span>
+        </Link>
+      </div>
     </div>
   )
 }
