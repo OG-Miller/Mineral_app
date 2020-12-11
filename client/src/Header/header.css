@@ -1,9 +1,23 @@
 .header {
-  background-color: #f4976c;
+  /* background-color: #f4976c; */
+  background-color: #f7f3f3;
+  /* background-image:linear-gradient(-90deg, #d8d8da, white); */
   text-align: center;
-  padding-top: 0.5vh;
-  height: 84px;
+  padding-top: 0.9vh;
+  height: 110px;
   position: sticky;
   top:0;
+  /* align-items: center; */
+
+}
+
+img{
+ width: 150px;
+ display: flex;
+ position: flex-start;
+ padding-left: 0px;
+ padding-top: 0px;
+ padding-bottom: 10px;
+ 
 
 }

@@ -1,34 +1,54 @@
 .mineLink_container {
-  color: rgb(48, 4, 4);
-  background-color: rgb(217, 229, 235);
+  color: rgb(42, 135, 211);
+  background-color: #ebe6e5;
   padding: 20px;
-  margin: 10px; 
+  /* border: 1px;
+  border-style: solid;
+  border-color: #029df7; */
+  margin: 1px; 
   flex:7;
   overflow: hidden;
+  box-shadow: 1px 1px 1px rgb(109, 109, 109);
+  /* max-height: 55px; */
+  border-radius: 10px;
+}
+.mineLink_container:hover {
+  /* background-color:  #c3c3c4; */
+  /* box-shadow: 2px 2px 3px #ec0202; */
+  /* border: 4px;
+  border-style: solid ;
+  border-color:  #EA4747; */
+  box-shadow: 3px 3px 3px rgb(109, 109, 109);
+  background: linear-gradient(45deg, #f1f0f0,#e6e2e1 );
 }
 
 .mine-id{
-  color: gray;
-  font-size: smaller;
+  color: #9b1414;
+  font-size: small;
+  font-family: monospace;
   margin-bottom: 0px;
   margin-right: 0px;
   float: right;
 }
 
-.bookmarkLink{
-  color: black;
-  font-size: x-small;
-  font-weight: lighter;
+.home-bookmarkLink{
+  color: #4b4b4b;
+  font-size: normal;
+  margin-top: 5px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .createdAt{
-  color: gray;
+  color: #4b4b4b;
   font-size: smaller;
-  
-  
+  font-family: monospace;
 }
 
 .title {
+  margin-bottom: 0px;
   margin-top: 0px;
   word-break: keep-all;
+  font-family: Helvetica, Arial, sans-serif;
+  letter-spacing: 0px;
+  font-size: medium;
 }

@@ -1,5 +1,26 @@
 .sidebar-option {
-  color:  #f4976c;
+  /* color:  #f4976c; */
+  color: rgb(42, 135, 211);
   text-decoration: none;
+  padding-left: 16px;
+  padding-right: 30px;
+  padding-bottom: 0px;
+  font-size: small;
+  font-family: 'IBM Plex Sans', sans-serif;
+  letter-spacing: 1px;
+  height: 25px;
+  
+  
+  
 }
 
+
+.sidebar-option :hover {
+  color:  #eaa147;
+}
+
+@media (min-width: 736px) {
+  .sidebar-option {
+    height: 19px;
+  }
+}

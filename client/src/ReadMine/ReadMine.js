@@ -3,154 +3,227 @@ import { MinesContext } from '../MinesContext';
 import './readMine.css';
 import NewNoteForm from './NewNoteForm';
 import NoteCard from './NoteCard';
+import { Link } from 'react-router-dom';
+
+
 
 const ReadMine = () => {
-  const { mineId, specificMine, setSpecificMine} = useContext(MinesContext);
-  const { isShow , setIsShow } = useContext(MinesContext);
+  const { mineId, specificMine, setSpecificMine, noteFormIsShow , setNoteFormIsShow, fromEdit, setFromEdit } = useContext(MinesContext);
   const [ notesArray, setNotesArray ] = useState([]);
   const [ showNotes, setShowNotes ] = useState(false);
+  const [ mineIsShow, setMineIsShow ] = useState('');
   const [ noteId, setNoteId ] = useState('');
+  // const [ noteIndex, setNoteIndex ] = useState('');
+  const [ fromEditNote, setFromEditNote ] = useState(false);
+  const [ specificNote, setSpecificNote ] = useState({});
   
   
+
   useEffect(() => {
-    fetchSpecificMine();
+    // setTimeout(() => {
     
+      fetchSpecificMine();
+    //   }
+    // ,100)
+   
   },[]);
 
-  // fetch specific post
+  useEffect(() => {
+    setShowNotes(true);
+    console.log(notesArray);
+  },[notesArray]);
+  
+  // useEffect(() => {
+  //   console.log("noteFormIsShow: ", noteFormIsShow);
+  // },[noteFormIsShow]);
+
+  // useEffect(() => {
+  //   console.log("fromEditNote: ", fromEditNote);
+  // },[fromEditNote]);
+
+  
+  useEffect(() => {
+    console.log("noteID: ",noteId);
+    getIndex();
+  }, [noteId]);
+  
+ 
+
+  useEffect( () => {
+    console.log(specificNote);
+    }
+  ,[ specificNote ]);
+  
+  
+  // FETCH SPECIFIC MINE
   const fetchSpecificMine = async () => {
     const specificMineResponse = await fetch(`http://localhost:5000/${mineId}`);
     const jsonResponse = await specificMineResponse.json();
-    //console.log(jsonResponse);
-    setNotesArray(jsonResponse.notes);//////
+    setNotesArray(jsonResponse.notes);
     setSpecificMine(jsonResponse);
-  
+    console.log(specificMine);
   } 
 
-
-
-  useEffect(() => {
-    console.log(showNotes)
-  },[showNotes]);
-
-  useEffect(() => {
-    setShowNotes(true);
-  },[notesArray]);
-  
-  useEffect(() => {
-    setIsShow(false);
-  },[]);
-  
+  // MINE ADD
   const handleAdd = () => {
-    setIsShow(true) //this toggles show/hide once
-  }
-
-  const handleNoteClick = () => {
-    console.log("clicked");
+    console.log("mine card add button clicked");
+    setNoteFormIsShow(true);//this toggles show/hide once
   }
   
+  // DELETE ENTIRE MINE 
+  const handleDelete = () => {
+  
+   let options = {
+     method: 'DELETE',
+     headers: {
+       'Content-Type': 'application/json'
+     }
+   };
+   fetch(`http://localhost:5000/${mineId}`,options);
+   
+  }
+  // this should .then() call something like set *****
+  
 
-
-  const handleEdit = () => {
+// EDIT MINE
+  const handleEdit =  () => {
+    setFromEdit(true);  
     setShowNotes(true);
   }
+
+  const getIndex = () => {
+    let gotIndex =  notesArray.findIndex( element => {
+      if (element._id === noteId ) {
+      return true;
+      }
+    });
+    setSpecificNote(notesArray[gotIndex]);
+    console.log(gotIndex);   
+  }
   
-  const passedEdit = (e) => {
-    console.log("edit worked");
-    console.log(e.target.parentElement.parentElement.childNodes[2].innerHTML);
-    //here we render the form again but with values filled.
-    // data will come from 
+  
+  
+  // NOTES - EDIT
+  const passedEdit = (_id) => {
+    // setNoteId(e.target.parentElement.parentElement.childNodes[3].innerHTML);//when noteId is updated - useEffect calls getIndex() this relies on e being passed in function
+    setNoteId(_id);
+    console.log(noteId);
+    setFromEditNote(true); 
+    setTimeout(() => {
+      setNoteFormIsShow(true);
+      }
+    , 100);
   }
 
 
-///////// /////////// ////////// ////////// ///////// ////////// /////////// ////////// ////////// //////////
 
-  function passedDelete(e)  {
-    console.log("delete worked");
-    console.log(e.target.parentElement.parentElement.childNodes[2].innerHTML);
 
-    //delete one note from array by id
-     //1: get id from click
-     
-    //  console.log();
-  }
- 
-  
-  //below taken from "add a note"
-  // const handleAddNote = () => {
+ // NOTES - DELETE
+  const passedDelete = (_id) => {
+    const noteIdent = _id;
     
-  //     const newNoteData = { 
-  //      _id: noteId
-  //       };
+    let options = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      }
       
-  //     let options = {
-  //       method: 'PATCH',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify(newNoteData),
-  //     }
-  //     fetch(`http://localhost:5000/${mineId}/add`,options);// "tomorrow " post
-  
-    
-  // }
-
-  
-///////// /////////// ////////// ////////// ////////// ///////// /////////// ////////// ////////// //////////
-  
-  const passedAdd = (e) => {
-    console.log("Add worked");
-    console.log(e.target.parentElement.parentElement.childNodes[2].innerHTML);
-    setIsShow(true);
+    }
+    fetch(`http://localhost:5000/del/${mineId}/${noteIdent}`,options).then( () => {
+      setNotesArray(notesArray.filter(note => note._id != noteIdent))
+    });
   }
   
+ 
+
+  // NOTES - ADD
+  const passedAdd = (_id) => {
+    setFromEdit(false); 
+    setNoteId(_id);
+    setNoteFormIsShow(true); 
+  }
   
+
   
   return(
-    <div className='read-main'>
+    
+    <div value={mineId} className='read-main'>
        <div className='card'>
-        <h1>{specificMine.title}</h1>
-        <a href={specificMine.bookmarkLink} target="blank" rel="noreferrer noopener" >{specificMine.bookmarkLink}</a>
-        <span className="updated-at">{specificMine.createdAt !== specificMine.updatedAt ? '   Updated: ' + specificMine.updatedAt : null}</span>
-        <span className='body'>{specificMine.body} </span>
-        <div className="item-details">
-          <span className="created-at">Created: {specificMine.createdAt}</span>
-          <span className='mine-id'>ID: {mineId}</span>
+          <h1 className="mine-card-title">{specificMine.title}</h1>
+          <a href={specificMine.bookmarkLink} className="bookmarkLink" target="blank" rel="noreferrer noopener" >{specificMine.bookmarkLink}</a>
+          <hr/>
+          <span className='body'>{specificMine.body} </span>
+          <hr/>
+          <span className="updated-at">{specificMine.createdAt !== specificMine.updatedAt ? '   Updated: ' + specificMine.updatedAt : null}</span>
+          <div className="item-details">
+            <span className="created-at">Created: {specificMine.createdAt}</span>
+            <span className='mine-id'>ID: {mineId}</span>
+          </div>
+          <div className="controls">
+            <Link to={'/NewMine'} >
+              <span  onClick={handleEdit} className="edit-button">Edit</span>
+            </Link>
+            <span onClick={handleDelete} className="delete-button">Delete</span>
+            <span onClick={handleAdd} className="add-button">Add</span>
+          </div>
         </div>
-        <div className="controls">
-          <span  onClick={handleEdit} className="edit-button">Edit</span>
-          <span className="delete-button">Delete</span>
-          {specificMine.notes? <span onClick={handleAdd} className="add-button">Add</span> : null }
-        </div>
-      </div>
+      
+    
      
 
+
+     
+     { 
+     //notesArray.length >0 &&
+        notesArray.map( ( {  testPropper, _id, link, title, note } ) => {
+        return (
+          <NoteCard
+          
+          
+          passAdd={e => passedAdd(_id)}
+          passDelete={e => passedDelete(_id)}//this will delete the note -> delete the note from db
+          passEdit={e => passedEdit(_id)}//this will open NewNoteForm with previous data inserted and editable -> http patch the data on db
+          key={_id}
+          _id={_id}
+          link={link}
+          title={title}
+          note={note}
+          
+          /> 
+          )}
+        )
     
-     
-     
-     {  notesArray.map( ( { _id, link, title, note, onChildClickDelete} ) => {
-      return (
-        <NoteCard
-        // testButton={console.log(testButton)}
-        passAdd={e => passedAdd(e)}
-        passDelete={e => passedDelete(e)}//this will delete the note -> delete the note from db
-        passEdit={e => passedEdit(e)}//this will open NewNoteForm with previous data inserted and editable -> http patch the data on db
-        key={_id}
-        _id={_id}
-        link={link}
-        title={title}
-        note={note}
-        
-        /> 
-        )}
-      )
-     }
+      }
        
     
-      { isShow? <NewNoteForm/> : null }
-      {/* { specificMine.notes.length === 0 ?  setIsShow(true) : null } */}
+      { noteFormIsShow  && fromEditNote  ?
+       <NewNoteForm
+        noteIdProp={noteId}
+        setFromEditNoteProp={setFromEditNote}
+        fromEditNoteProp={fromEditNote}
+        notesArrayProp={notesArray}
+        setNotesArrayProp={setNotesArray}
+        linkInput={ specificNote.link}
+        titleInput={specificNote.title}
+        bodyInput={specificNote.note}
+        updateButtonVal={"Update Note"}
+        /> :null
+        }
+
+      { noteFormIsShow === true  && fromEditNote === false  ?
+       <NewNoteForm
+       noteIdProp={noteId}
+       setFromEditNoteProp={setFromEditNote}
+       fromEditNoteProp={fromEditNote}
+       notesArrayProp={notesArray}
+       setNotesArrayProp={setNotesArray}
+       addButtonVal={"Add New Note"}
+        /> :null
+        }
+     
       
-    </div>
+    </div> 
+   
   )
 }
 export default ReadMine;

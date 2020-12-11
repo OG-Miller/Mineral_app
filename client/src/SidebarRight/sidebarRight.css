@@ -3,20 +3,40 @@
   /* flex:1.5; */
   flex-direction: column;
   height: 100vh;
-
- 
- 
 }
 
 @media (min-width: 736px) {
   .sidebarRight {
     display: inline-flex;
     height: 100vh;
-    background-image:linear-gradient( #d2fdff, white);
+    background-image:linear-gradient( #dad8d8, white);
     min-width: fit-content;
     max-width:250px ;
     float: right;
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 20px;
+    align-content: center;
+  
+    
   }
+
+  .gem-cabinet {
+    color: rgb(42, 135, 211);
+    /* text-decoration: none; */
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: small;
+    font-family: 'IBM Plex Sans', sans-serif;
+    letter-spacing: 1px;
+    
+  }
+
+  .gem-cabinet :hover {
+    color: #ecc113;
+  }
+
+
+
+
 }

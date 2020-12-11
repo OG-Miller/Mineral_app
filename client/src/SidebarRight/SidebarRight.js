@@ -7,7 +7,9 @@ const SidebarRight = () => {
 
 
   return(
-    <div className='sidebarRight'>SidebarRight</div>
+    <div className='sidebarRight'>
+     <h5 className="gem-cabinet"> Mine Store</h5>
+    </div>
   )
 }
 

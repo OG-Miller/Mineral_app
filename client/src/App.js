@@ -24,13 +24,13 @@ const App = () => {
         <div className='main_column'>
           <Header />
           <div className='centre_row'>
-            <SidebarLeft />
-              <Switch>
-                <Route exact path='/ReadMine' component={ReadMine} />
-                <Route exact path='/' component={Home}/>
-                <Route exact path='/NewMine' component={NewMine} />
-              </Switch>
-            <SidebarRight />
+          <SidebarLeft />
+            <Switch>
+              <Route exact path='/ReadMine' component={ReadMine} />
+              <Route exact path='/' component={Home}/>
+              <Route exact path='/NewMine' component={NewMine} />
+            </Switch>
+          <SidebarRight />
           </div>
           {/* <Footer /> */}
         </div>

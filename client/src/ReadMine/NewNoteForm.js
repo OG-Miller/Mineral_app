@@ -7,20 +7,24 @@ import { MinesContext } from '../MinesContext';
 
 
 const NewNoteForm = (props) => {
-  const { mineId ,  isShow, setIsShow } = useContext(MinesContext);
-  const [ linkData, setLinkData ] = useState('');
-  const [ titleData, setTitleData ] = useState('');
-  const [ noteData, setNoteData ] = useState('');
+  // const { mineId ,  noteFormIsShow, setNoteFormIsShow, fromEditNote, setFromEditNote, specificNote, setSpecificNote  } = useContext(MinesContext);
+  const { mineId ,  noteFormIsShow, setNoteFormIsShow  } = useContext(MinesContext);
+  const [ linkData, setLinkData ] = useState( props.linkInput );
+  const [ titleData, setTitleData ] = useState( props.titleInput );
+  const [ noteData, setNoteData ] = useState( props.bodyInput  );
+
+  
+  
   
   // onChange={ (e) => props.onChange(e.target.value, e.target) }
 
   
-     //update a mine
+     //add a note *** WORKING AND ACTIVE ***
      const handleAddNote = () => {
-      if (noteData.length <1 ) {
+      if (noteData.length < 1 ) {
         alert("Must contain note body!");
       } else {
-        const newNoteData = { 
+        const updatedNoteData = { 
           title: titleData,
           link: linkData,
           note: noteData
@@ -31,29 +35,81 @@ const NewNoteForm = (props) => {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(newNoteData),
+          body: JSON.stringify(updatedNoteData),
         }
-        fetch(`http://localhost:5000/${mineId}/add`,options);// "tomorrow " post
-        
-  
-        setIsShow(false);
+        fetch(`http://localhost:5000/${mineId}/add`,options).then(() => {
+          props.setNotesArrayProp([...props.notesArrayProp, { title: titleData, link: linkData , note: noteData}   ])
+        }
+        );
+        setNoteFormIsShow(false);
       }
      
     }
+  
+  // trying to update a note - main code is copied from above////////////////////////////////////////////////////////////////////////////////////<<<
+    const handleUpdateNote = () => {
+      console.log("Update note clicked")
+
+      const specNoteId = props.noteIdProp;
+      console.log("specNoteId : " + specNoteId);
+
+      const newNoteData = { 
+        title: titleData,
+        link: linkData,
+        note: noteData
+        };
+      
+      // props.setNotesArrayProp([...props.notesArrayProp, newNoteData ])
+
+      let options = {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newNoteData),
+      }
+      fetch(`http://localhost:5000/${mineId}/update/${specNoteId}`,options);
+      // .then(() => {
+      //   // props.setNotesArrayProp([...props.notesArrayProp, { title: titleData, link: linkData , note: noteData} ]);
+      //   // props.setNotesArrayProp(props.notesArrayProp.filter(note => note._id === props.noteIdProp));
+      // }
+      // );
+        // REMEMBER:  .then( remove noteId note from frontend render   )
+      setNoteFormIsShow(false);
+    }
+
 
     const handleCancel = () => {
-      setIsShow(!isShow);
+     console.log("berfore: " + props.fromEditNote);
+     props.setNotesArrayProp(props.notesArrayProp);
+      // setFromEditNote(false);
+      setNoteFormIsShow(false);
+     props.setFromEditNoteProp(!props.fromEditNoteProp)
+  
     }
+
+    console.log("noteFormIsShow: " + noteFormIsShow);
+    console.log("fromEditNote: " + props.fromEditNote);
+
+   
+    // useEffect( () => {
+    //   console.log(specificNote);
+    // },[specificNote]); 
+    
+    useEffect( () => {
+      console.log("fromEditNote: " + props.fromEditNote);
+    },[props.fromEditNote]); 
+    
 
 
 
   return(
 
     <div className="new-note-form">
-          <input className="link-input" placeholder="Link" name="linkInput" value={linkData} onChange={(e) => setLinkData( e.target.value )}/>
-          <input className="title-input"  placeholder="Title" ame="titleInput" value={titleData} onChange={(e) => setTitleData( e.target.value )} />
+          <input className="link-input" placeholder="Link" name="linkInput" defaultValue={props.linkInput} onChange={(e) => setLinkData( e.target.value )}/>
+          <input className="title-input"  placeholder="Title" name="titleInput" defaultValue={props.titleInput} onChange={(e) => setTitleData( e.target.value )} />
           <textarea
-            value={noteData}
+            defaultValue={props.bodyInput}
             onChange={ (e) => setNoteData( e.target.value ) }
             name="noteInput"
             placeholder="Body"
@@ -66,11 +122,18 @@ const NewNoteForm = (props) => {
             >
           </textarea>
 
+    {/* { fromEditNote? <span className="update-button"  onClick={handleUpdateNote}>{props.buttonVal}</span> : 
+            <span className="submit-button"  onClick={ handleAddNote } >Add Note</span>
+          }
+          <span className="cancel-button"  onClick={handleCancel}>Cancel</span> */}
+        <div className="controls-container">
 
-        <Link to={'/ReadMine'} > 
-          <span className="submit-button"  onClick={handleAddNote} >Add Note</span>
-          <span className="cancel-button"  onClick={handleCancel}>Cancel</span>
-        </Link>
+          <span className="submit-button"  onClick={ handleAddNote } >{ props.addButtonVal }</span>
+          <span className="update-button"  onClick={ handleUpdateNote }>{ props.updateButtonVal }</span>
+          <span className="cancel-button"  onClick={ handleCancel }>Cancel</span>
+        </div>
+          {/* {fromEditNote ? <span className="update-button"  onClick={handleUpdateNote}>Update Note</span> : null } */}
+        
 
     </div>
 

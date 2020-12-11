@@ -5,13 +5,14 @@ import SidebarOption from './SidebarOption';
 
 const SidebarLeft = () => {
 
+ 
 
 
   return(
     
       <div className="sidebarLeft">
-        <SidebarOption page={'/'} title="Home"/>
-        <SidebarOption page={'/NewMine'} title="New Mine"/>
+        <SidebarOption page={'/'} title="Home"  />
+        <SidebarOption page={'/NewMine'} title="New Mine"  />
       </div>
   
   )

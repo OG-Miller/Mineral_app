@@ -1,21 +1,28 @@
 .sidebarLeft {
-  display: none;
-  flex:1.5;
-  flex-direction: column;
+  /* this is small mode */
+  display: flex;
+  flex:0;
+  flex-direction: row;
   height: 100vh;
- 
   margin-top: 0px;
+  padding-left: 15px;
+  padding-bottom: 0px;
+  background-color: rgb(221, 221, 220) ;
+  word-wrap: break-word;
 }
 
 @media (min-width: 736px) {
   .sidebarLeft {
-    display: inline-flex;
-    background-image:linear-gradient( #d2fdff, white);
+    display: flex;
+    flex-direction: column;
+    background-image:linear-gradient( #d8d8da, white);
     min-width: fit-content;
     max-width:175px;
+    padding-top: 21px;
     padding-left: 15px;
     padding-right: 15px;
     height: 100vh;
+    
   }
 
 }
