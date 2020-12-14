@@ -1,6 +1,6 @@
 
 .new-mine-main{
-  background-color: #dee9f1 ;
+  background-color: #cdcdcd ;
   align-content: center;
   display: flex;
   flex: 7;
@@ -15,9 +15,15 @@
 }
 
 .new-mine-form{
-  background-color: #dee9f1; 
+  background: linear-gradient(45deg, #ffffff,#ecebe7 );
+  margin: 20px;
+  padding:  30px;
   display: flex;
   flex-direction: column;
+  min-height: fit-content;
+  box-shadow: 0px 0px 10px 8px rgb(170, 169, 169);
+  /* border: 4px solid  #838281; */
+  border-radius: 15px;
 }
 
 .link-input, .title-input, .body-input {
@@ -27,6 +33,7 @@
   margin-left: 20px;
   margin-right: 20px;
   border-radius: 5px;
+  box-shadow: 0px 0px 5px 1px rgb(170, 169, 169);
   
 }
 
