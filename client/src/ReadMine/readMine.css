@@ -1,6 +1,6 @@
 
 .read-main {
-  background-color: #cdcdcd ;
+  background-color:   rgb(41, 50, 60);
   align-content: center;
   /* height:100vh; */
   display: flexbox;
@@ -22,8 +22,8 @@
 
 
 .card {
-  background: linear-gradient(45deg, #ffffff,#ecebe7 );
-  /* background-color: #dee9f1; */
+  /* background: linear-gradient(45deg, #ffffff,#ecebe7 ); */
+  background-color: rgb(30, 36, 43);
   /* margin:  25px; */
   margin: 20px;
   padding:  30px;
@@ -33,7 +33,8 @@
   overflow: auto;
   word-wrap: break-word;
   min-height: fit-content;
-  box-shadow: 4px 4px 6px 4px  rgb(143, 143, 143); 
+  box-shadow: 3px 3
+  px 3px 1px  rgb(20, 24, 29);
   /* box-shadow: 0px 0px 10px 8px rgb(170, 169, 169);
   /* border: 4px solid  #838281; */
   border-radius: 15px;
@@ -43,7 +44,7 @@
 
 .mine-card-title {
   /* background-color: rgb(42, 135, 211); */
-  color: #2e2e2e;
+  color: #fcfcfc;
   font-size: x-large;
   margin-bottom: 5px;
   margin-top:0px;
@@ -56,7 +57,7 @@
 .bookmarkLink {
   
   margin-bottom: 10px;
-  color:  #727272;
+  color: #F29220;
   font-size: small;
   font-weight: normal;
   text-decoration: inherit;
@@ -68,7 +69,7 @@
 a {
   margin-bottom: 10px;
   color:  #131313;
-  font-size: smaller;
+  font-size: medium;
   font-weight: normal;
   text-decoration: inherit;
   word-break: break-all;
@@ -85,7 +86,7 @@ a {
 .created-at, .updated-at {
   display: flex;
   color: rgb(128, 128, 128);
-  font-size: x-small;
+  font-size: small;
   font-weight: normal ;
   word-break: break-all;
   
@@ -96,8 +97,8 @@ a {
   display: flex;
   /* margin-bottom: 10px; */
   margin-left: 15px;
-  color: rgb(128, 128, 128);
-  font-size: smaller;
+  color: rgb(51, 152, 240);
+  font-size: small;
   font-weight: normal ;
   word-break: break-all;
 }
@@ -106,8 +107,8 @@ a {
 .body {
   margin-bottom: 0px;
   font-size: medium;
-  color: black;
-  /* font-family: monospace; */
+  color: white;
+    /* font-family: monospace; */
   
 }
 

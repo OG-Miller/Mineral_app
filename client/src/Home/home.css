@@ -1,10 +1,11 @@
 .home-main{
-  background-color: #cdcdcd ;
+  background-color:  rgb(41, 50, 60);
   align-content: center;
   display: inline-flex;
   flex: 7;
   flex-direction: column;
   padding: 10px;
+  padding-top:20px;
   height: fit-content;
 }
 

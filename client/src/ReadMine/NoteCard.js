@@ -32,7 +32,7 @@ const NoteCard = (props) => {
             <h1 className="note-card-title">{props.title}</h1>
             <a href={props.link} className="noteLink" target="blank" rel="noreferrer noopener" >{props.link}</a>
             <span className="noteBody">{props.note}</span>
-            <span className="noteId" >{props._id}</span>
+            <span className="noteId" >ID:{props._id}</span>
          <div className="noteControls">
           <span value="edit" onClick={passedEdit}>Edit</span>
           <span value="delete" onClick={passedDelete}>Delete</span>

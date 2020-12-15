@@ -1,6 +1,6 @@
 
 .new-mine-main{
-  background-color: #cdcdcd ;
+  background-color: rgb(41, 50, 60);
   align-content: center;
   display: flex;
   flex: 7;
@@ -15,25 +15,26 @@
 }
 
 .new-mine-form{
-  background: linear-gradient(45deg, #ffffff,#ecebe7 );
+  background-color: rgb(30, 36, 43);
   margin: 20px;
   padding:  30px;
   display: flex;
   flex-direction: column;
   min-height: fit-content;
-  box-shadow: 0px 0px 10px 8px rgb(170, 169, 169);
+  box-shadow: 0px 0px 10px 8px rgb(18, 21, 26);
   /* border: 4px solid  #838281; */
   border-radius: 15px;
 }
 
 .link-input, .title-input, .body-input {
+  background-color: rgb(41, 50, 60);
   border: none;
   padding: 15px;
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 1px rgb(170, 169, 169);
+  /* box-shadow: 0px 0px 5px 1px rgb(18, 21, 26); */
   
 }
 

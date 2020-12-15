@@ -1,6 +1,6 @@
 .header {
   /* background-color: #f4976c; */
-  background-color: #f7f3f3;
+  background-color:  rgb(41, 50, 60);
   /* background-image:linear-gradient(-90deg, #d8d8da, white); */
   text-align: center;
   padding-top: 0.9vh;
@@ -8,16 +8,16 @@
   position: sticky;
   top:0;
   /* align-items: center; */
-  box-shadow: 1px 1px 5px 3px rgb(170, 169, 169);
+  box-shadow: 1px 1px 3px 4px rgb(23, 28, 34);
 
 }
 
 img{
- width: 150px;
+ width: 110px;
  display: flex;
  position: flex-start;
- padding-left: 0px;
- padding-top: 0px;
+ padding-left: 20px;
+ padding-top: 10px;
  padding-bottom: 10px;
  
 

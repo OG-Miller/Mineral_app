@@ -157,7 +157,7 @@ const ReadMine = () => {
           <span className="updated-at">{specificMine.createdAt !== specificMine.updatedAt ? '   Updated: ' + specificMine.updatedAt : null}</span>
           <div className="item-details">
             <span className="created-at">Created: {specificMine.createdAt}</span>
-            <span className='mine-id'>ID: {mineId}</span>
+            <span className='mine-id'>ID:{mineId}</span>
           </div>
           <div className="controls">
             <Link to={'/NewMine'} >

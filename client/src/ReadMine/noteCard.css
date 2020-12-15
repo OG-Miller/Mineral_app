@@ -1,6 +1,6 @@
 .noteCard{
   /* background: linear-gradient(45deg, #f1f0f0,#7deeb6 ); */
-  background-color: #dee9f1;
+  background-color:   rgb(74, 74, 74);
   margin:  20px;
   padding:  30px;
   display: flex;
@@ -8,14 +8,14 @@
   flex-wrap: auto;
   overflow: auto;
   word-wrap: break-word;
-  /* box-shadow: 1px 1px 1px rgb(109, 109, 109); */
+  box-shadow: 1px 1px 1px rgb(12, 16, 24);
   /* border-left: 2px solid rgb(42, 135, 211); */
   border-radius: 15px;
 }
 
 .note-card-title {
   /* background-color:  #eaa147; */
-  color: #2e2e2e;
+  color: white;
   margin-top: 0px;
   margin-bottom: 5px;
   /* font-family: 'Montserrat', sans-serif; */
@@ -32,7 +32,7 @@
   margin-left: 15px;
   align-self: flex-end;
   color:gray;
-  font-size: smaller;
+  font-size: small;
   font-weight: normal;
   word-break: break-all;
   font-family: monospace;
@@ -41,7 +41,7 @@
 .noteLink {
   
   margin-bottom: 10px;
-  color:  #727272;
+  color:#ed890f;
   font-size: small;
   font-weight: normal;
   text-decoration: inherit;

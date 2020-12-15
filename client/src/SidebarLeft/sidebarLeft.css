@@ -7,7 +7,7 @@
   margin-top: 0px;
   padding-left: 15px;
   padding-bottom: 0px;
-  background-color: rgb(221, 221, 220) ;
+  background-color:rgb(41, 50, 60);
   word-wrap: break-word;
 }
 
@@ -15,13 +15,15 @@
   .sidebarLeft {
     display: flex;
     flex-direction: column;
-    background-image:linear-gradient( #d8d8da, white);
+    /* background-image:linear-gradient( #092b06, white); */
+    background-color: rgb(41, 50, 60);
     min-width: fit-content;
     max-width:175px;
     padding-top: 21px;
     padding-left: 15px;
     padding-right: 15px;
     height: 100vh;
+    
     
   }
 
