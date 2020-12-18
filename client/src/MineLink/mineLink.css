@@ -1,64 +1,47 @@
 .mineLink_container {
-  color: rgb(42, 135, 211);
-  background-color:  rgb(30, 36, 43);
-  padding: 20px;
-  /* border: 1px;
-  border-style: solid;
-  border-color: #029df7; */
-  margin: 1px; 
-  flex:7;
-  overflow: hidden;
-  box-shadow: 1px 3px 3px rgb(4, 15, 28);
-  /* max-height: 55px; */
-  border-radius: 10px;
- 
+	color: rgb(42, 135, 211);
+	background-color: rgb(30, 36, 43);
+	padding: 20px;
+	margin: 1px;
+	flex: 7;
+	overflow: hidden;
+	box-shadow: 1px 3px 3px rgb(4, 15, 28);
+	border-radius: 10px;
+	height: fit-content;
 }
 .mineLink_container:hover {
-  /* background-color:  #c3c3c4; */
-  /* box-shadow: 2px 2px 3px #ec0202; */
-  /* border: 4px;
-  border-style: solid ;
-  border-color:  #EA4747; */
-  box-shadow: 0px 0px 1px 2px rgb(10, 133, 227);
-  /* background: linear-gradient(45deg, #f1f0f0,#e6e2e1 ); */
-  /* rgb(14, 48, 90); */
-  /* border-top: 1px solid  #af6b18; */
-  /* border-top: 2px solid  #b36f15; */
-  /* border-left: 2px solid  #44b315; */
-  position: x 10px;
-  
+	box-shadow: 0px 0px 1px 2px rgb(10, 133, 227);
+	position: x 10px;
 }
 
-.mine-id{
-  color:#ed890f;
-  font-size: medium;
-  font-family: monospace;
-  margin-bottom: 0px;
-  margin-right: 0px;
-  float: right;
+.mine-id {
+	color: #ed890f;
+	font-size: medium;
+	font-family: monospace;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	float: right;
 }
 
-.home-bookmarkLink{
-  color:#F29220;
-  font-size: normal;
-  margin-top: 5px;
-  font-family: Arial, Helvetica, sans-serif;
+.home-bookmarkLink {
+	color: #f29220;
+	font-size: large;
+	margin-top: 5px;
+	font-family: monospace;
 }
 
-.createdAt{
-  color: #c7c5c5;
-  font-size: small;
-  font-family: monospace;
+.createdAt {
+	color: #c7c5c5;
+	font-size: small;
+	font-family: monospace;
 }
 
 .title {
-  margin-bottom: 0px;
-  margin-top: 0px;
-  word-break: keep-all;
-  font-family: Helvetica, Arial, sans-serif;
-  letter-spacing: 0px;
-  font-size: medium;
-  /* color: #EA4747; */
-  color: #dcdcdc;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	word-break: keep-all;
+	font-family: 'Titillium Web', sans-serif;
+	letter-spacing: 0px;
+	font-size: large;
+	color: #dcdcdc;
 }
-

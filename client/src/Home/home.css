@@ -1,24 +1,22 @@
-.home-main{
-  background-color:  rgb(41, 50, 60);
-  align-content: center;
-  display: inline-flex;
-  flex: 7;
-  flex-direction: column;
-  padding: 10px;
-  padding-top:20px;
-  height: fit-content;
+.home-main {
+	background-color: rgb(41, 50, 60);
+	align-content: center;
+	display: inline-flex;
+	flex: 7;
+	flex-direction: column;
+	padding: 10px;
+	padding-top: 20px;
+	height: fit-content;
 }
 
 @media (min-width: 736px) {
-  .home-main {
-    height: fit-content;
-  }
-
+	.home-main {
+		height: fit-content;
+	}
 }
 
-.bookmarkLink{
-  color: gray;
-  font-size: medium;
-  font-weight: lighter ;
+.bookmarkLink {
+	color: gray;
+	font-size: medium;
+	font-weight: lighter;
 }
-

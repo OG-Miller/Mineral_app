@@ -10,6 +10,7 @@ import Footer from './Footer/Footer';
 import ReadMine from './ReadMine/ReadMine'
 import { DataProvider } from './MinesContext';
 import NewMine from './NewMine/NewMine';
+import ScrollToTop from './ScrollToTop';
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
     
     <DataProvider>
       <Router>
+      <ScrollToTop />
         <div className='main_column'>
           <Header />
           <div className='centre_row'>

@@ -1,26 +1,32 @@
 .sidebar-option {
-  /* color:  #f4976c; */
-  color: rgb(249, 249, 249);
-  text-decoration: none;
-  padding-left: 16px;
-  padding-right: 30px;
-  padding-bottom: 0px;
-  font-size: small;
-  font-family: 'IBM Plex Sans', sans-serif;
-  letter-spacing: 1px;
-  height: 25px;
-  
-  
-  
+	text-decoration: none;
+	margin-left: 16px;
+	margin-right: 30px;
+	margin-bottom: 0px;
+	margin-top: 18px;
+	font-size: small;
+	font-family: 'IBM Plex Sans', sans-serif;
+	letter-spacing: 1px;
+	height: 25px;
+	display: flex;
+	align-items: center;
+
+	word-wrap: break-word;
 }
 
+@media (max-width: 736px) {
+	.sidebar-option {
+		/* height: 19px;  */
+		margin-top: 22px;
+		word-break: keep-all;
+	}
+}
 
-.sidebar-option :hover {
+.icon {
+	padding-right: 10px;
+	height: 20px;
+}
+
+/* .icon:hover {
   color: #F29220;
-}
-
-@media (min-width: 736px) {
-  .sidebar-option {
-    height: 19px;
-  }
-}
+} */
