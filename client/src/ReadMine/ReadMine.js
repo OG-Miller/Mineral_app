@@ -72,6 +72,7 @@ const ReadMine = () => {
 		setFromEditNote(false);
 		console.log('mine card add button clicked');
 		setNoteFormIsShow(true); //this toggles show/hide once
+		// newNoteForm.scrollIntoView();
 	};
 
 	// DELETE ENTIRE MINE
@@ -117,21 +118,22 @@ const ReadMine = () => {
 
 	// NOTES - DELETE
 	const passedDelete = (_id) => {
-		const noteIdent = _id;
+		if (window.confirm('Delete note?')) {
+			const noteIdent = _id;
 
-		let options = {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		};
-		fetch(`http://localhost:5000/del/${mineId}/${noteIdent}`, options).then(
-			() => {
-				setNotesArray(notesArray.filter((note) => note._id != noteIdent));
-			}
-		);
+			let options = {
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			};
+			fetch(`http://localhost:5000/del/${mineId}/${noteIdent}`, options).then(
+				() => {
+					setNotesArray(notesArray.filter((note) => note._id != noteIdent));
+				}
+			);
+		}
 	};
-
 	// NOTES - ADD
 	const passedAdd = (_id) => {
 		// setFromEdit(!fromEditNote);
@@ -218,6 +220,7 @@ const ReadMine = () => {
 			{noteFormIsShow === true && fromEditNote === false ? (
 				<NewNoteForm
 					noteIdProp={noteId}
+					fetchSpecificMineProp={fetchSpecificMine}
 					setFromEditNoteProp={setFromEditNote}
 					fromEditNoteProp={fromEditNote}
 					notesArrayProp={notesArray}

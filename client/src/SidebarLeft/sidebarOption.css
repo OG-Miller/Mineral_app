@@ -10,10 +10,9 @@
 	height: 25px;
 	display: flex;
 	align-items: center;
-
 	word-wrap: break-word;
 }
-
+/* small mode */
 @media (max-width: 736px) {
 	.sidebar-option {
 		/* height: 19px;  */
@@ -21,12 +20,24 @@
 		word-break: keep-all;
 	}
 }
+/* big mode */
+/* @media (min-width: 737px) {
+	h4,
+	.icon {
+		position: fixed;
+		padding-left: 20px;
+	}
+} */
 
 .icon {
 	padding-right: 10px;
 	height: 20px;
 }
 
-/* .icon:hover {
-  color: #F29220;
+.icon:hover {
+	color: #f29220;
+}
+
+/* h4 {
+	position: fixed;
 } */

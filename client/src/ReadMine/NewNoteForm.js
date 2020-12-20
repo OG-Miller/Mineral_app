@@ -18,6 +18,7 @@ const NewNoteForm = (props) => {
 	//add a note *** WORKING AND ACTIVE ***
 	const handleAddNote = () => {
 		props.setFromEditNoteProp(false);
+
 		if (noteData.length < 1) {
 			alert('Must contain note body!');
 		} else {
@@ -35,16 +36,20 @@ const NewNoteForm = (props) => {
 				body: JSON.stringify(updatedNoteData),
 			};
 			fetch(`http://localhost:5000/${mineId}/add`, options).then(() => {
-				props.setNotesArrayProp([
-					...props.notesArrayProp,
-					{ title: titleData, link: linkData, note: noteData },
-				]);
+				// 	props.setNotesArrayProp([
+				// 		...props.notesArrayProp,
+				// 		{ title: titleData, link: linkData, note: noteData },
+				// 	]);
+				// });// This previously rendered the new note on front-end without database id before trying new version.
+				setNoteFormIsShow(false);
+				props.fetchSpecificMineProp();
+
+				// window.scrollTo(0, 1000);
 			});
-			setNoteFormIsShow(false);
 		}
 	};
 
-	// trying to update a note - main code is copied from above////////////////////////////////////////////////////////////////////////////////////<<<
+	// update a note WORKING AND ACTIVE ***
 	const handleUpdateNote = () => {
 		const specNoteId = props.noteIdProp;
 		console.log('specNoteId : ' + specNoteId);
