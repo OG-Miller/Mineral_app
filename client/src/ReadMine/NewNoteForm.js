@@ -46,8 +46,6 @@ const NewNoteForm = (props) => {
 
 	// trying to update a note - main code is copied from above////////////////////////////////////////////////////////////////////////////////////<<<
 	const handleUpdateNote = () => {
-		console.log('Update note clicked');
-
 		const specNoteId = props.noteIdProp;
 		console.log('specNoteId : ' + specNoteId);
 
@@ -57,8 +55,6 @@ const NewNoteForm = (props) => {
 			note: noteData,
 		};
 
-		// props.setNotesArrayProp([...props.notesArrayProp, newNoteData ])
-
 		let options = {
 			method: 'PATCH',
 			headers: {
@@ -66,13 +62,11 @@ const NewNoteForm = (props) => {
 			},
 			body: JSON.stringify(newNoteData),
 		};
-		fetch(`http://localhost:5000/${mineId}/update/${specNoteId}`, options);
-		// .then(() => {
-		//   // props.setNotesArrayProp([...props.notesArrayProp, { title: titleData, link: linkData , note: noteData} ]);
-		//   // props.setNotesArrayProp(props.notesArrayProp.filter(note => note._id === props.noteIdProp));
-		// }
-		// );
-		// REMEMBER:  .then( remove noteId note from frontend render   )
+		fetch(`http://localhost:5000/${mineId}/update/${specNoteId}`, options).then(
+			() => {
+				props.fetchSpecificMineProp();
+			}
+		);
 		setNoteFormIsShow(false);
 	};
 
@@ -84,15 +78,8 @@ const NewNoteForm = (props) => {
 		props.setFromEditNoteProp(!props.fromEditNoteProp);
 	};
 
-	// console.log('noteFormIsShow: ' + noteFormIsShow);
-	// console.log('fromEditNote: ' + props.fromEditNote);
-
-	// useEffect( () => {
-	//   console.log(specificNote);
-	// },[specificNote]);
-
 	useEffect(() => {
-		console.log('fromEditNote: ' + props.fromEditNote);
+		console.log('props.fromEditNote: ' + props.fromEditNote);
 	}, [props.fromEditNote]);
 
 	return (
@@ -121,10 +108,6 @@ const NewNoteForm = (props) => {
 				maxLength='600'
 			></textarea>
 
-			{/* { fromEditNote? <span className="update-button"  onClick={handleUpdateNote}>{props.buttonVal}</span> : 
-            <span className="submit-button"  onClick={ handleAddNote } >Add Note</span>
-          }
-          <span className="cancel-button"  onClick={handleCancel}>Cancel</span> */}
 			<div className='controls-container'>
 				{!props.fromEditNoteProp ? (
 					<span className='add-note-button' onClick={handleAddNote}>
@@ -139,7 +122,6 @@ const NewNoteForm = (props) => {
 					Cancel
 				</span>
 			</div>
-			{/* {fromEditNote ? <span className="update-button"  onClick={handleUpdateNote}>Update Note</span> : null } */}
 		</div>
 	);
 };

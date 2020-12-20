@@ -53,9 +53,9 @@ const ReadMine = () => {
 		console.log(specificNote);
 	}, [specificNote]);
 
-	useEffect(() => {
-		console.log(specificMine);
-	}, [specificMine]);
+	// useEffect(() => {
+	// 	console.log(specificMine);
+	// }, [specificMine]);
 
 	// FETCH SPECIFIC MINE
 	const fetchSpecificMine = async () => {
@@ -134,7 +134,8 @@ const ReadMine = () => {
 
 	// NOTES - ADD
 	const passedAdd = (_id) => {
-		setFromEdit(!fromEditNote);
+		// setFromEdit(!fromEditNote);
+		setFromEditNote(false);
 		setNoteId(_id);
 		setNoteFormIsShow(true);
 	};
@@ -201,6 +202,7 @@ const ReadMine = () => {
 			{noteFormIsShow && fromEditNote ? (
 				<NewNoteForm
 					key={noteId}
+					fetchSpecificMineProp={fetchSpecificMine}
 					noteIdProp={noteId}
 					setFromEditNoteProp={setFromEditNote}
 					fromEditNoteProp={fromEditNote}
