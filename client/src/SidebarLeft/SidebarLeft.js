@@ -10,24 +10,22 @@ import NoteControls from './NoteControls';
 const SidebarLeft = () => {
 	return (
 		<div className='sidebarLeft'>
-			<div className='position-test'>
-				<SidebarOption
-					className='home'
-					name='home'
-					Icon={Home}
-					page={'/'}
-					title='Home'
-				/>
-				<SidebarOption
-					name='add'
-					className='addMine'
-					Icon={AddOutlinedIcon}
-					page={'/NewMine'}
-					title='New Mine'
-				/>
-				<hr />
-				<NoteControls />
-			</div>
+			<SidebarOption
+				className='home'
+				name='home'
+				Icon={Home}
+				page={'/'}
+				title='Home'
+			/>
+			<SidebarOption
+				name='add'
+				className='addMine'
+				Icon={AddOutlinedIcon}
+				page={'/NewMine'}
+				title='New Mine'
+			/>
+			{/* <hr />
+				<NoteControls /> */}
 		</div>
 	);
 };
