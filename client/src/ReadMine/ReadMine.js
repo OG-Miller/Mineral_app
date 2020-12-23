@@ -156,7 +156,7 @@ const ReadMine = () => {
 				</a>
 				{/* <hr/> */}
 				<span className='body'>{specificMine.body} </span>
-				<hr />
+				{/* <hr /> */}
 				<span className='updated-at'>
 					{specificMine.createdAt !== specificMine.updatedAt
 						? '   Updated: ' + specificMine.updatedAt

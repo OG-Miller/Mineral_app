@@ -89,7 +89,8 @@ a {
 }
 
 .body {
-	margin-bottom: 0px;
+	padding-bottom: 20px;
+	padding-top: 5px;
 	font-size: medium;
 	color: white;
 	font-family: 'Titillium Web', sans-serif;
