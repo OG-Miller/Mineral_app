@@ -61,6 +61,7 @@ a {
 	font-weight: normal;
 	text-decoration: inherit;
 	word-break: break-all;
+	font-size: 15px;
 }
 
 .item-details {
@@ -111,7 +112,9 @@ hr {
 	align-items: baseline;
 	justify-content: space-evenly;
 	margin-top: 15px;
-	font-family: monospace;
-	font-size: large;
+	font-size: 13px;
+	font-family: 'IBM Plex Sans', sans-serif;
+	letter-spacing: 1px;
+	font-size: 15px;
 	cursor: pointer;
 }

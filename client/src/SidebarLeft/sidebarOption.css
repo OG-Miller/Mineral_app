@@ -22,10 +22,8 @@
 }
 /* big mode */
 /* @media (min-width: 737px) {
-	h4,
-	.icon {
+	.button-div {
 		position: fixed;
-		padding-left: 20px;
 	}
 } */
 
@@ -38,7 +36,3 @@
 .icon:hover {
 	color: #f29220;
 }
-
-/* h4 {
-	position: fixed;
-} */

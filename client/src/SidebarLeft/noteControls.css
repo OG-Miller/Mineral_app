@@ -1,16 +1,37 @@
-h3 {
+.noteControl-title {
 	text-decoration: none;
-	color: #c7c5c5;
-	margin-left: 16px;
-	margin-right: 30px;
-	margin-bottom: 0px;
-	margin-top: 18px;
+	/* padding-bottom: 5; */
+	padding-top: 14px;
+	margin: 0;
 	font-size: small;
 	font-family: 'IBM Plex Sans', sans-serif;
 	letter-spacing: 1px;
 	height: 25px;
-	display: flex;
-	align-items: center;
+	/* display: flex; */
+	align-self: center;
 	word-wrap: break-word;
+	color: #c7c5c5;
+}
+
+.noteControl-icon {
+	color: #c7c5c5;
+	padding-right: 10px;
+	margin-top: 0;
+	height: 20px;
+	/* display: flex; */
+	align-self: center;
+}
+
+.noteControls-right {
+	display: flex;
+	/* justify-content: space-between; */
+	align-items: center;
+	padding-right: 25px;
+	cursor: pointer;
 	position: fixed;
+	padding-top: 10px;
+}
+
+.noteControls-right:hover {
+	color: orangered;
 }

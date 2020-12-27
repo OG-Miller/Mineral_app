@@ -14,6 +14,7 @@ const ReadMine = () => {
 		setNoteFormIsShow,
 		fromEdit,
 		setFromEdit,
+		setShowNoteControls,
 	} = useContext(MinesContext);
 	const [notesArray, setNotesArray] = useState([]);
 	const [showNotes, setShowNotes] = useState(false);
@@ -25,8 +26,13 @@ const ReadMine = () => {
 
 	useEffect(() => {
 		// setTimeout(() => {
+		console.log(window.location.pathname);
+		fetchSpecificMine().then(() => {
+			if (notesArray.length > 0) {
+				setShowNoteControls(true);
+			}
+		});
 
-		fetchSpecificMine();
 		//   }
 		// ,100)
 	}, []);
@@ -67,7 +73,7 @@ const ReadMine = () => {
 		console.log(specificMine);
 	};
 
-	// FROM MINE ADD NOTE
+	// FROM MINE ADD NOTE ( add first note to mine )
 	const handleAdd = () => {
 		setFromEditNote(false);
 		console.log('mine card add button clicked');
@@ -96,7 +102,7 @@ const ReadMine = () => {
 	};
 
 	const getIndex = () => {
-		let gotIndex = notesArray.findIndex((element) => {
+		let gotIndex = notesArray.findIndex(element => {
 			if (element._id === noteId) {
 				return true;
 			}
@@ -106,7 +112,7 @@ const ReadMine = () => {
 	};
 
 	// NOTES - EDIT
-	const passedEdit = (_id) => {
+	const passedEdit = _id => {
 		// setNoteId(e.target.parentElement.parentElement.childNodes[3].innerHTML);//when noteId is updated - useEffect calls getIndex() this relies on e being passed in function
 		setNoteId(_id);
 		console.log(noteId);
@@ -117,7 +123,7 @@ const ReadMine = () => {
 	};
 
 	// NOTES - DELETE
-	const passedDelete = (_id) => {
+	const passedDelete = _id => {
 		if (window.confirm('Delete note?')) {
 			const noteIdent = _id;
 
@@ -127,15 +133,13 @@ const ReadMine = () => {
 					'Content-Type': 'application/json',
 				},
 			};
-			fetch(`http://localhost:5000/del/${mineId}/${noteIdent}`, options).then(
-				() => {
-					setNotesArray(notesArray.filter((note) => note._id != noteIdent));
-				}
-			);
+			fetch(`http://localhost:5000/del/${mineId}/${noteIdent}`, options).then(() => {
+				setNotesArray(notesArray.filter(note => note._id != noteIdent));
+			});
 		}
 	};
 	// NOTES - ADD
-	const passedAdd = (_id) => {
+	const passedAdd = _id => {
 		// setFromEdit(!fromEditNote);
 		setFromEditNote(false);
 		setNoteId(_id);
@@ -188,9 +192,9 @@ const ReadMine = () => {
 				notesArray.map(({ testPropper, _id, link, title, note }) => {
 					return (
 						<NoteCard
-							passAdd={(e) => passedAdd(_id)}
-							passDelete={(e) => passedDelete(_id)} //this will delete the note -> delete the note from db
-							passEdit={(e) => passedEdit(_id)} //this will open NewNoteForm with previous data inserted and editable -> http patch the data on db
+							passAdd={e => passedAdd(_id)}
+							passDelete={e => passedDelete(_id)} //this will delete the note -> delete the note from db
+							passEdit={e => passedEdit(_id)} //this will open NewNoteForm with previous data inserted and editable -> http patch the data on db
 							key={_id}
 							_id={_id}
 							link={link}
@@ -226,6 +230,9 @@ const ReadMine = () => {
 					notesArrayProp={notesArray}
 					setNotesArrayProp={setNotesArray}
 					addButtonVal={'Add New Note'}
+					bodyInput={''}
+					linkInput={''}
+					titleInput={''}
 				/>
 			) : null}
 		</div>

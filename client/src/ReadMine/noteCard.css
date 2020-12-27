@@ -59,8 +59,9 @@
 	justify-content: space-evenly;
 	margin-top: 15px;
 	color: white;
-	font-family: monospace;
-	font-size: large;
+	font-size: 15px;
+	font-family: 'IBM Plex Sans', sans-serif;
+	letter-spacing: 1px;
 	cursor: pointer;
 }
 
