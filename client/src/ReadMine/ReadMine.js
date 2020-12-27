@@ -59,6 +59,10 @@ const ReadMine = () => {
 		console.log(specificNote);
 	}, [specificNote]);
 
+	useEffect(() => {
+		console.log(mineId);
+	}, [mineId]);
+
 	// useEffect(() => {
 	// 	console.log(specificMine);
 	// }, [specificMine]);

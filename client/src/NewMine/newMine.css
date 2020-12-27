@@ -76,7 +76,8 @@ form {
 	font-weight: bold;
 	font-family: 'IBM Plex Sans', sans-serif;
 	padding: 10px;
-	background-color: #ed890f;
+	padding-bottom: 8px;
+	background-color: #c7c5c5;
 	border-radius: 8px;
 	margin-left: 20px;
 }

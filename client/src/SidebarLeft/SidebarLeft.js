@@ -9,14 +9,16 @@ import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 const SidebarLeft = () => {
 	return (
 		<div className='sidebarLeft'>
-			<SidebarOption className='home' name='home' Icon={Home} page={'/'} title='Home' />
-			<SidebarOption
-				name='add'
-				className='addMine'
-				Icon={AddOutlinedIcon}
-				page={'/NewMine'}
-				title='New Mine'
-			/>
+			<div className='optionHolder'>
+				<SidebarOption className='home' name='home' Icon={Home} page={'/'} title='Home' />
+				<SidebarOption
+					name='add'
+					className='addMine'
+					Icon={AddOutlinedIcon}
+					page={'/NewMine'}
+					title='New Mine'
+				/>
+			</div>
 		</div>
 	);
 };

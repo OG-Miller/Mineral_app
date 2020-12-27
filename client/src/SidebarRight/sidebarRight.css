@@ -40,3 +40,6 @@
 /* .noteControls-right {
 	
 } */
+.noteControls:hover {
+	color: orangered;
+}
