@@ -2,7 +2,10 @@
 	/* background: linear-gradient(45deg, #f1f0f0,#7deeb6 ); */
 	background-color: rgb(30, 36, 43);
 	margin: 20px;
+	margin-left: 30;
+	margin-right: 30;
 	padding: 30px;
+
 	display: flex;
 	flex-direction: column;
 	flex-wrap: auto;
@@ -53,7 +56,7 @@
 	line-height: 16pt;
 }
 
-.noteControls {
+.noteCardControls {
 	display: flex;
 	align-items: baseline;
 	justify-content: space-evenly;

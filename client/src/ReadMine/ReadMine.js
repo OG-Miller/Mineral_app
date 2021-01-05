@@ -15,6 +15,7 @@ const ReadMine = () => {
 		fromEdit,
 		setFromEdit,
 		setShowNoteControls,
+		setCounter,
 	} = useContext(MinesContext);
 	const [notesArray, setNotesArray] = useState([]);
 	const [showNotes, setShowNotes] = useState(false);
@@ -24,9 +25,12 @@ const ReadMine = () => {
 	const [fromEditNote, setFromEditNote] = useState(false);
 	const [specificNote, setSpecificNote] = useState({});
 
+	// setShowNoteControls(true);
+	setCounter(8);
 	useEffect(() => {
+		// setCounter(9);
 		// setTimeout(() => {
-		console.log(window.location.pathname);
+
 		fetchSpecificMine().then(() => {
 			if (notesArray.length > 0) {
 				setShowNoteControls(true);

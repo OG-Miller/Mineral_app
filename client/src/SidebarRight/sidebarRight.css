@@ -30,16 +30,11 @@
 		font-size: small;
 		font-family: 'IBM Plex Sans', sans-serif;
 		letter-spacing: 1px;
-	}
+  }
+  
+  
 
 	.gem-cabinet :hover {
 		color: #ecc113;
 	} */
-}
-
-/* .noteControls-right {
-	
-} */
-.noteControls:hover {
-	color: orangered;
 }

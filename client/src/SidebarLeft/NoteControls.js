@@ -4,10 +4,10 @@ import './noteControls.css';
 
 const NoteControls = props => {
 	const { setNoteFormIsShow } = useContext(MinesContext);
-	const handleClick = () => {};
+	// const handleClick = () => {};
 
 	return (
-		<div className='noteControls-right' onClick={() => setNoteFormIsShow(true)}>
+		<div className='noteControl-right' onClick={() => setNoteFormIsShow(true)}>
 			{/* <Icon className='noteControl-icon' /> */}
 			<props.Icon className='noteControl-icon' />
 			<h4 className='noteControl-title'>{props.title}</h4>

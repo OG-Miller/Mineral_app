@@ -31,7 +31,7 @@ const NoteCard = props => {
 					{props.note}
 				</span>
 				<span className='noteId'>Note ID:{props._id}</span>
-				<div className='noteControls'>
+				<div className='noteCardControls'>
 					<span value='edit' onClick={passedEdit}>
 						Edit
 					</span>

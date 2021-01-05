@@ -22,15 +22,31 @@
 	align-self: center;
 }
 
-.noteControls-right {
+.noteControl-right {
 	display: flex;
 	/* justify-content: space-between; */
 	align-items: center;
 	padding-right: 25px;
+
 	cursor: pointer;
-	position: fixed;
+	/* position: fixed; */
+	padding-top: 12px;
+}
+
+/* .noteControlsLeft {
+	display: flex;
+	
+	align-items: center;
+	padding-right: 25px;
+	cursor: pointer;
+	
 	padding-top: 10px;
 }
+@media (min-width: 736px) {
+	.noteControlsLeft {
+		display: none;
+	}
+} */
 
 /* .noteControls-title:hover {
 	color: orangered;

@@ -6,28 +6,18 @@ import { MinesContext } from '../MinesContext';
 const MineLink = ({ _id, createdAt, title, bookmarkLink }) => {
 	const { setMineId } = useContext(MinesContext);
 
-	const handleClick = (e) => {
+	const handleClick = e => {
 		setMineId(_id);
+		// setCounter(4);
 	};
 
 	return (
 		<Link to={'/ReadMine'} style={{ textDecoration: 'none' }}>
-			<div className='mineLink_container' onClick={(e) => handleClick(e)}>
+			<div className='mineLink_container' onClick={e => handleClick(e)}>
 				<span className='mine-id'>ID:{_id}</span>
 				<h2 className='title'>{title}</h2>
 				<span className='home-bookmarkLink'>{bookmarkLink}</span>
 				<br />
-				{/* <marquee
-					behavior='scroll'//or "slide"
-					direction='left'
-					className='home-bookmarkLink'
-				>
-					{bookmarkLink}
-				</marquee> */}
-				<br />
-
-				{/* <marquee behavior="slide" direction="left">{bookmarkLink}</marquee> */}
-
 				<span className='createdAt'>{createdAt}</span>
 			</div>
 		</Link>

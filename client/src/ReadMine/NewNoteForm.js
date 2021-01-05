@@ -81,7 +81,8 @@ const NewNoteForm = props => {
 		props.setNotesArrayProp(props.notesArrayProp);
 		// setFromEditNote(false);
 		setNoteFormIsShow(false);
-		props.setFromEditNoteProp(!props.fromEditNoteProp);
+		// props.setFromEditNoteProp(!props.fromEditNoteProp);
+		props.setFromEditNoteProp(false);
 	};
 
 	useEffect(() => {

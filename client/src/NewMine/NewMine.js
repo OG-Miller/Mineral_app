@@ -5,27 +5,16 @@ import { MinesContext } from '../MinesContext';
 
 const NewMine = () => {
 	// if fromEdit then below insures any un-edited fields will have previous values
-	const {
-		specificMine,
-		fromEdit,
-		setFromEdit,
-		minesData,
-		setMinesData,
-	} = useContext(MinesContext);
-	const [mineStatus, setMineStatus] = useState(
-		fromEdit ? specificMine.mineStatus : ''
+	const { specificMine, fromEdit, setFromEdit, minesData, setMinesData, setCounter } = useContext(
+		MinesContext
 	);
-	const [newMineTitle, setNewMineTitle] = useState(
-		fromEdit ? specificMine.title : ''
-	);
-	const [newMineBody, setNewMineBody] = useState(
-		fromEdit ? specificMine.body : ''
-	);
-	const [newMineLink, setNewMineLink] = useState(
-		fromEdit ? specificMine.bookmarkLink : ''
-	);
+	const [mineStatus, setMineStatus] = useState(fromEdit ? specificMine.mineStatus : '');
+	const [newMineTitle, setNewMineTitle] = useState(fromEdit ? specificMine.title : '');
+	const [newMineBody, setNewMineBody] = useState(fromEdit ? specificMine.body : '');
+	const [newMineLink, setNewMineLink] = useState(fromEdit ? specificMine.bookmarkLink : '');
 
 	useEffect(() => {
+		setCounter(8);
 		console.log('fromEdit : ', fromEdit);
 	}, [fromEdit]);
 
@@ -58,7 +47,7 @@ const NewMine = () => {
 	};
 
 	// create new mine
-	const handleCreateMine = (e) => {
+	const handleCreateMine = e => {
 		if (newMineLink.length < 1) {
 			alert('You forgot to add a link');
 		}
@@ -91,14 +80,14 @@ const NewMine = () => {
 					placeholder='Link'
 					defaultValue={fromEdit ? specificMine.bookmarkLink : null}
 					required
-					onChange={(e) => setNewMineLink(e.target.value)}
+					onChange={e => setNewMineLink(e.target.value)}
 				></input>
 				<input
 					className='title-input'
 					placeholder='Title'
 					defaultValue={fromEdit ? specificMine.title : null}
 					required
-					onChange={(e) => setNewMineTitle(e.target.value)}
+					onChange={e => setNewMineTitle(e.target.value)}
 				></input>
 				<textarea
 					placeholder='Note'
@@ -107,7 +96,7 @@ const NewMine = () => {
 					className='body-input'
 					maxLength='600'
 					defaultValue={fromEdit ? specificMine.body : null}
-					onChange={(e) => setNewMineBody(e.target.value)}
+					onChange={e => setNewMineBody(e.target.value)}
 				></textarea>
 
 				{/* <form>

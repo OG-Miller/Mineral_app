@@ -6,6 +6,7 @@
 	padding-top: 0.9vh;
 	height: 110px;
 	position: sticky;
+	width: 100%;
 	top: 0;
 	/* align-items: center; */
 	box-shadow: 1px 1px 3px 4px rgb(23, 28, 34);

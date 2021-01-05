@@ -2,7 +2,7 @@ import React, { useState, createContext } from 'react';
 
 export const MinesContext = createContext();
 
-export const DataProvider = (props) => {
+export const DataProvider = props => {
 	// const [ data, setData ] = useState ('');
 	const [mineId, setMineId] = useState('');
 	const [specificMine, setSpecificMine] = useState({});
@@ -11,7 +11,8 @@ export const DataProvider = (props) => {
 	const [fromEditNote, setFromEditNote] = useState(false);
 	const [minesData, setMinesData] = useState([]);
 	const [specificNote, setSpecificNote] = useState({});
-	const [showNoteControls, setShowNoteControls] = useState(false);
+	const [showNoteControls, setShowNoteControls] = useState(true);
+	const [counter, setCounter] = useState(0);
 
 	return (
 		<MinesContext.Provider
@@ -32,6 +33,8 @@ export const DataProvider = (props) => {
 				setMinesData,
 				showNoteControls,
 				setShowNoteControls,
+				counter,
+				setCounter,
 			}}
 		>
 			{props.children}

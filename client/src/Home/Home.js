@@ -4,10 +4,14 @@ import { MinesContext } from '../MinesContext';
 import './home.css';
 
 function Home() {
-	const { minesData, setMinesData } = useContext(MinesContext);
-	console.log(window.location.pathname);
+	const { minesData, setMinesData, setCounter } = useContext(MinesContext);
+
+	// useEffect(() => {
+	// 	fetchAllMines();
+	// }, [path]);
 
 	useEffect(() => {
+		setCounter(8);
 		setTimeout(() => {
 			fetchAllMines();
 		}, 300);
@@ -22,7 +26,7 @@ function Home() {
 
 	return (
 		<div className='home-main'>
-			{minesData.map((mine) => (
+			{minesData.map(mine => (
 				<MineLink
 					key={mine._id}
 					_id={mine._id}

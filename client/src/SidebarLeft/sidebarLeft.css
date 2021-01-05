@@ -12,6 +12,40 @@
 	align-content: space-around;
 }
 
+.noteControlsLeft {
+	display: flex;
+	align-items: center;
+	padding-right: 25px;
+	cursor: pointer;
+	padding-top: 10px;
+}
+
+/* @media (min-width: 736px) {
+	.noteControlsLeft {
+		visibility: hidden;
+		position: static;
+		background: hotpink;
+	}
+} */
+
+/* small mode */
+@media (max-width: 735px) {
+	.optionHolder {
+		display: flex;
+		margin-bottom: 18px;
+	}
+	.sidebarLeft {
+		display: flex;
+	}
+	.home .addMine,
+	.noteControlsLeft {
+		position: fixed;
+	}
+	.noteControlsLeft {
+		padding-top: 25px;
+	}
+}
+
 @media (min-width: 736px) {
 	.sidebarLeft {
 		display: flex;
@@ -25,6 +59,16 @@
 		padding-right: 15px;
 		height: 100vh;
 	}
+	.optionHolder {
+		position: fixed;
+	}
+
+	.noteControlsLeft {
+		visibility: hidden;
+		position: static;
+		background: hotpink;
+		margin-top: 15px;
+	}
 }
 
 /* @media (min-width: 800px) {
@@ -37,7 +81,3 @@
 .position-test {
 	position: fixed;
 } */
-
-.optionHolder {
-	position: fixed;
-}
