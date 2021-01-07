@@ -71,12 +71,11 @@
 	}
 }
 
-/* @media (min-width: 800px) {
-  .sidebarLeft {
-    background-color: green;
-
-  }
-} */
+@media (min-width: 736px) {
+	.notebutton-left {
+		display: none;
+	}
+}
 /* 
 .position-test {
 	position: fixed;

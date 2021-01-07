@@ -38,9 +38,6 @@ const NoteCard = props => {
 					<span value='delete' onClick={passedDelete}>
 						Delete Note
 					</span>
-					{/* <span value='add' onClick={passedAdd}>
-						Add
-					</span> */}
 				</div>
 			</div>
 		</div>

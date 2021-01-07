@@ -11,7 +11,7 @@ export const DataProvider = props => {
 	const [fromEditNote, setFromEditNote] = useState(false);
 	const [minesData, setMinesData] = useState([]);
 	const [specificNote, setSpecificNote] = useState({});
-	const [showNoteControls, setShowNoteControls] = useState(true);
+	// const [showNoteControls, setShowNoteControls] = useState(true);
 	const [counter, setCounter] = useState(0);
 
 	return (
@@ -31,8 +31,8 @@ export const DataProvider = props => {
 				setSpecificNote,
 				minesData,
 				setMinesData,
-				showNoteControls,
-				setShowNoteControls,
+				// showNoteControls,
+				// setShowNoteControls,
 				counter,
 				setCounter,
 			}}

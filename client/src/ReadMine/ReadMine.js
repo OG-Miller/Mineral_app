@@ -12,81 +12,33 @@ const ReadMine = () => {
 		setSpecificMine,
 		noteFormIsShow,
 		setNoteFormIsShow,
-		fromEdit,
 		setFromEdit,
-		setShowNoteControls,
-		setCounter,
 	} = useContext(MinesContext);
 	const [notesArray, setNotesArray] = useState([]);
 	const [showNotes, setShowNotes] = useState(false);
-	const [mineIsShow, setMineIsShow] = useState('');
 	const [noteId, setNoteId] = useState('');
-	// const [ noteIndex, setNoteIndex ] = useState('');
 	const [fromEditNote, setFromEditNote] = useState(false);
 	const [specificNote, setSpecificNote] = useState({});
 
-	// setShowNoteControls(true);
-	setCounter(8);
 	useEffect(() => {
-		// setCounter(9);
-		// setTimeout(() => {
-
-		fetchSpecificMine().then(() => {
-			if (notesArray.length > 0) {
-				setShowNoteControls(true);
-			}
-		});
-
-		//   }
-		// ,100)
+		fetchSpecificMine();
 	}, []);
 
 	useEffect(() => {
 		setShowNotes(true);
-		console.log(notesArray);
 	}, [notesArray]);
-
-	// useEffect(() => {
-	//   console.log("noteFormIsShow: ", noteFormIsShow);
-	// },[noteFormIsShow]);
-
-	// useEffect(() => {
-	//   console.log("fromEditNote: ", fromEditNote);
-	// },[fromEditNote]);
 
 	useEffect(() => {
 		console.log('noteID: ', noteId);
 		getIndex();
 	}, [noteId]);
 
-	useEffect(() => {
-		console.log(specificNote);
-	}, [specificNote]);
-
-	useEffect(() => {
-		console.log(mineId);
-	}, [mineId]);
-
-	// useEffect(() => {
-	// 	console.log(specificMine);
-	// }, [specificMine]);
-
-	// FETCH SPECIFIC MINE
 	const fetchSpecificMine = async () => {
 		const specificMineResponse = await fetch(`http://localhost:5000/${mineId}`);
 		const jsonResponse = await specificMineResponse.json();
 		setNotesArray(jsonResponse.notes);
 		setSpecificMine(jsonResponse);
-
 		console.log(specificMine);
-	};
-
-	// FROM MINE ADD NOTE ( add first note to mine )
-	const handleAdd = () => {
-		setFromEditNote(false);
-		console.log('mine card add button clicked');
-		setNoteFormIsShow(true); //this toggles show/hide once
-		// newNoteForm.scrollIntoView();
 	};
 
 	// DELETE ENTIRE MINE
@@ -103,15 +55,15 @@ const ReadMine = () => {
 	};
 	// this should .then() link back to /home
 
-	// EDIT MINE
+	// EDIT MINE MAIN CARD
 	const handleEdit = () => {
 		setFromEdit(true);
 		setShowNotes(true);
 	};
 
 	const getIndex = () => {
-		let gotIndex = notesArray.findIndex(element => {
-			if (element._id === noteId) {
+		let gotIndex = notesArray.findIndex(note => {
+			if (note._id === noteId) {
 				return true;
 			}
 		});
@@ -121,7 +73,6 @@ const ReadMine = () => {
 
 	// NOTES - EDIT
 	const passedEdit = _id => {
-		// setNoteId(e.target.parentElement.parentElement.childNodes[3].innerHTML);//when noteId is updated - useEffect calls getIndex() this relies on e being passed in function
 		setNoteId(_id);
 		console.log(noteId);
 		setFromEditNote(true);
@@ -166,9 +117,7 @@ const ReadMine = () => {
 				>
 					{specificMine.bookmarkLink}
 				</a>
-				{/* <hr/> */}
 				<span className='body'>{specificMine.body} </span>
-				{/* <hr /> */}
 				<span className='updated-at'>
 					{specificMine.createdAt !== specificMine.updatedAt
 						? '   Updated: ' + specificMine.updatedAt
@@ -187,31 +136,23 @@ const ReadMine = () => {
 					<span onClick={handleDelete} className='delete-button'>
 						Delete Mine
 					</span>
-					{!notesArray.length > 0 ? (
-						<span onClick={handleAdd} className='add-button'>
-							Add
-						</span>
-					) : null}
 				</div>
 			</div>
 
-			{
-				//notesArray.length >0 &&
-				notesArray.map(({ testPropper, _id, link, title, note }) => {
-					return (
-						<NoteCard
-							passAdd={e => passedAdd(_id)}
-							passDelete={e => passedDelete(_id)} //this will delete the note -> delete the note from db
-							passEdit={e => passedEdit(_id)} //this will open NewNoteForm with previous data inserted and editable -> http patch the data on db
-							key={_id}
-							_id={_id}
-							link={link}
-							title={title}
-							note={note}
-						/>
-					);
-				})
-			}
+			{notesArray.map(({ testPropper, _id, link, title, note }) => {
+				return (
+					<NoteCard
+						passAdd={e => passedAdd(_id)}
+						passDelete={e => passedDelete(_id)} //this will delete the note -> delete the note from db
+						passEdit={e => passedEdit(_id)} //this will open NewNoteForm with previous data inserted and editable -> http patch the data on db
+						key={_id}
+						_id={_id}
+						link={link}
+						title={title}
+						note={note}
+					/>
+				);
+			})}
 
 			{noteFormIsShow && fromEditNote ? (
 				<NewNoteForm
