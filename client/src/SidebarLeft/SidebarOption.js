@@ -3,25 +3,25 @@ import './sidebarOption.css';
 import { Link } from 'react-router-dom';
 import { MinesContext } from '../MinesContext';
 
-const SidebarOption = ({ Icon, page, title }) => {
+const SidebarOption = ({ Icon, page, title, name }) => {
 	const { setFromEdit, setNoteFormIsShow } = useContext(MinesContext);
-
 	const [fontCol, setFontCol] = useState('#c7c5c5');
-
-	const styles = {
-		color: fontCol,
-		textDecoration: 'none',
-	};
 
 	const handleClick = () => {
 		setNoteFormIsShow(false);
 		setFromEdit(false);
 	};
 
+	const styles = {
+		color: fontCol,
+		textDecoration: 'none',
+	};
+
 	return (
 		<div className='button-div'>
 			<Link
-				onMouseEnter={() => setFontCol('orange')}
+				name={name}
+				onMouseEnter={() => (name === 'homeButton' ? setFontCol('#fff') : setFontCol('#f29220'))}
 				onMouseLeave={() => {
 					setFontCol('#c7c5c5');
 				}}

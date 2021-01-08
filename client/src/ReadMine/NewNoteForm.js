@@ -1,12 +1,9 @@
 import React, { useContext, useEffect, useState, useRef } from 'react';
-// import NewMine from '../NewMine/NewMine';
 import './newNoteForm.css';
-import { Link } from 'react-router-dom';
 import { MinesContext } from '../MinesContext';
 
 const NewNoteForm = props => {
-	// const { mineId ,  noteFormIsShow, setNoteFormIsShow, fromEditNote, setFromEditNote, specificNote, setSpecificNote  } = useContext(MinesContext);
-	const { mineId, noteFormIsShow, setNoteFormIsShow } = useContext(MinesContext);
+	const { mineId, setNoteFormIsShow } = useContext(MinesContext);
 	const [linkData, setLinkData] = useState(props.linkInput);
 	const [titleData, setTitleData] = useState(props.titleInput);
 	const [noteData, setNoteData] = useState(props.bodyInput);
@@ -16,9 +13,7 @@ const NewNoteForm = props => {
 	useEffect(() => {
 		noteFormRef.current.scrollIntoView({ behavior: 'smooth' });
 	}, []);
-	// onChange={ (e) => props.onChange(e.target.value, e.target) }
 
-	//add a note *** WORKING AND ACTIVE ***
 	const handleAddNote = () => {
 		props.setFromEditNoteProp(false);
 
@@ -39,20 +34,12 @@ const NewNoteForm = props => {
 				body: JSON.stringify(updatedNoteData),
 			};
 			fetch(`http://localhost:5000/${mineId}/add`, options).then(() => {
-				// 	props.setNotesArrayProp([
-				// 		...props.notesArrayProp,
-				// 		{ title: titleData, link: linkData, note: noteData },
-				// 	]);
-				// });// This previously rendered the new note on front-end without database id before trying new version.
 				setNoteFormIsShow(false);
 				props.fetchSpecificMineProp();
-
-				// window.scrollTo(0, 1000);
 			});
 		}
 	};
 
-	// update a note WORKING AND ACTIVE ***
 	const handleUpdateNote = () => {
 		const specNoteId = props.noteIdProp;
 		console.log('specNoteId : ' + specNoteId);
@@ -77,33 +64,27 @@ const NewNoteForm = props => {
 	};
 
 	const handleCancel = () => {
-		console.log('before: ' + props.fromEditNote);
 		props.setNotesArrayProp(props.notesArrayProp);
-		// setFromEditNote(false);
 		setNoteFormIsShow(false);
-		// props.setFromEditNoteProp(!props.fromEditNoteProp);
 		props.setFromEditNoteProp(false);
 	};
 
-	useEffect(() => {
-		console.log('props.fromEditNote: ' + props.fromEditNote);
-	}, [props.fromEditNote]);
-
 	return (
 		<div className='new-note-form' ref={noteFormRef}>
-			<input
-				className='link-input'
-				placeholder='Link'
-				name='linkInput'
-				defaultValue={props.linkInput}
-				onChange={e => setLinkData(e.target.value)}
-			/>
+			<span className='colorIndicator__NewNoteForm' />
 			<input
 				className='title-input'
 				placeholder='Title'
 				name='titleInput'
 				defaultValue={props.titleInput}
 				onChange={e => setTitleData(e.target.value)}
+			/>
+			<input
+				className='link-input'
+				placeholder='Link'
+				name='linkInput'
+				defaultValue={props.linkInput}
+				onChange={e => setLinkData(e.target.value)}
 			/>
 			<textarea
 				defaultValue={props.bodyInput}

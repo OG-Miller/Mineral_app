@@ -8,7 +8,6 @@ const MineLink = ({ _id, createdAt, title, bookmarkLink }) => {
 
 	const handleClick = e => {
 		setMineId(_id);
-		// setCounter(4);
 	};
 
 	return (

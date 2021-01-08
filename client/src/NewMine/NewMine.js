@@ -4,28 +4,19 @@ import { Link } from 'react-router-dom';
 import { MinesContext } from '../MinesContext';
 
 const NewMine = () => {
-	// if fromEdit then below insures any un-edited fields will have previous values
-	const { specificMine, fromEdit, setFromEdit, minesData, setMinesData, setCounter } = useContext(
+	const { specificMine, fromEdit, minesData, setMinesData, counter, setCounter } = useContext(
 		MinesContext
 	);
-	const [mineStatus, setMineStatus] = useState(fromEdit ? specificMine.mineStatus : '');
+	const [mineStatus] = useState(fromEdit ? specificMine.mineStatus : '');
 	const [newMineTitle, setNewMineTitle] = useState(fromEdit ? specificMine.title : '');
 	const [newMineBody, setNewMineBody] = useState(fromEdit ? specificMine.body : '');
 	const [newMineLink, setNewMineLink] = useState(fromEdit ? specificMine.bookmarkLink : '');
 
 	useEffect(() => {
-		setCounter(8);
-		console.log('fromEdit : ', fromEdit);
+		setCounter(prevCount => !prevCount);
 	}, [fromEdit]);
 
-	useEffect(() => {
-		console.log(newMineLink);
-	}, [newMineLink]);
-
 	const handleUpdateMine = () => {
-		// this is the update http call here
-		// !!!!! REMEMBER to setFromEdit(false) at the end - to reset it for next time./////////////////////!!!!!!!!!!!!!!!!!!!!!!!!!
-
 		const updatedMineData = {
 			title: newMineTitle,
 			body: newMineBody,
@@ -46,13 +37,10 @@ const NewMine = () => {
 		fetch(`http://localhost:5000/${specMineId}`, options);
 	};
 
-	// create new mine
 	const handleCreateMine = e => {
 		if (newMineLink.length < 1) {
 			alert('You forgot to add a link');
 		}
-
-		console.log(mineStatus);
 		const newMineData = {
 			title: newMineTitle,
 			body: newMineBody,
@@ -69,25 +57,26 @@ const NewMine = () => {
 		};
 
 		fetch('http://localhost:5000', options);
-		console.log('newMineData' + newMineData);
+		console.log(newMineData);
 	};
 
 	return (
 		<div className='new-mine-main'>
 			<div className='new-mine-form'>
-				<input
-					className='link-input'
-					placeholder='Link'
-					defaultValue={fromEdit ? specificMine.bookmarkLink : null}
-					required
-					onChange={e => setNewMineLink(e.target.value)}
-				></input>
+				<span className='colorIndicator__NewMine' />
 				<input
 					className='title-input'
 					placeholder='Title'
 					defaultValue={fromEdit ? specificMine.title : null}
 					required
 					onChange={e => setNewMineTitle(e.target.value)}
+				></input>
+				<input
+					className='link-input'
+					placeholder='Link'
+					defaultValue={fromEdit ? specificMine.bookmarkLink : null}
+					required
+					onChange={e => setNewMineLink(e.target.value)}
 				></input>
 				<textarea
 					placeholder='Note'
@@ -117,8 +106,7 @@ const NewMine = () => {
           name="polished"
           />
           
-        <br/>
-        <br/>
+        
         </form> */}
 				{fromEdit ? (
 					<Link to={'/'} style={{ textDecoration: 'none' }}>

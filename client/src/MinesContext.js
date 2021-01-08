@@ -3,7 +3,6 @@ import React, { useState, createContext } from 'react';
 export const MinesContext = createContext();
 
 export const DataProvider = props => {
-	// const [ data, setData ] = useState ('');
 	const [mineId, setMineId] = useState('');
 	const [specificMine, setSpecificMine] = useState({});
 	const [noteFormIsShow, setNoteFormIsShow] = useState(false);
@@ -11,8 +10,7 @@ export const DataProvider = props => {
 	const [fromEditNote, setFromEditNote] = useState(false);
 	const [minesData, setMinesData] = useState([]);
 	const [specificNote, setSpecificNote] = useState({});
-	// const [showNoteControls, setShowNoteControls] = useState(true);
-	const [counter, setCounter] = useState(0);
+	const [counter, setCounter] = useState(true);
 
 	return (
 		<MinesContext.Provider
@@ -31,8 +29,6 @@ export const DataProvider = props => {
 				setSpecificNote,
 				minesData,
 				setMinesData,
-				// showNoteControls,
-				// setShowNoteControls,
 				counter,
 				setCounter,
 			}}

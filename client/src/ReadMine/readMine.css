@@ -1,7 +1,6 @@
-.read-main {
+.mine {
 	background-color: rgb(41, 50, 60);
 	align-content: center;
-	/* height:100vh; */
 	display: flexbox;
 	flex: 7;
 	flex-direction: column;
@@ -20,6 +19,8 @@
 .card {
 	background-color: rgb(30, 36, 43);
 	margin: 20px;
+
+	padding-top: 0px;
 	padding: 30px;
 	display: flex;
 	flex-direction: column;
@@ -32,21 +33,25 @@
 }
 
 .mine-card-title {
-	color: rgb(30, 36, 43);
-	background-color: #f29220;
+	/* color: rgb(30, 36, 43); */
+	color: white;
+	/* background-color: #f29220; */
+	/* background-color: #f29220; */
 	font-size: x-large;
 	margin-bottom: 10px;
 	margin-top: 0px;
 	font-family: 'Titillium Web', sans-serif;
 	font-weight: bolder;
 	padding: 3px;
-	padding-left: 5px;
+	padding-top: 0px;
+	padding-left: 0px;
 	border-radius: 2px;
 }
 
 .bookmarkLink {
 	margin-bottom: 10px;
-	color: #f29220;
+	/* color: #f29220; */
+	color: #729ca5;
 	font-size: large;
 	font-weight: normal;
 	text-decoration: inherit;
@@ -83,6 +88,8 @@ a {
 .mine-id {
 	display: flex;
 	margin-left: 15px;
+	margin-top: 4px;
+
 	color: #c7c5c5;
 	font-size: small;
 	font-weight: normal;
@@ -117,4 +124,19 @@ hr {
 	letter-spacing: 1px;
 	font-size: 15px;
 	cursor: pointer;
+}
+
+.MineCardColorAndIdWrapper {
+	display: flex;
+}
+.colorIndicator__MineCard {
+	padding-bottom: 10px;
+	background-color: #f29220;
+	margin-bottom: 10px;
+	margin-left: -1px;
+	height: 8px;
+	width: 60px;
+	border-radius: 15px;
+
+	/* align-self: flex-end; */
 }

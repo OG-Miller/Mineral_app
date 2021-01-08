@@ -4,14 +4,9 @@ import { MinesContext } from '../MinesContext';
 import './home.css';
 
 function Home() {
-	const { minesData, setMinesData, setCounter } = useContext(MinesContext);
-
-	// useEffect(() => {
-	// 	fetchAllMines();
-	// }, [path]);
+	const { minesData, setMinesData } = useContext(MinesContext);
 
 	useEffect(() => {
-		setCounter(8);
 		setTimeout(() => {
 			fetchAllMines();
 		}, 300);
@@ -20,7 +15,6 @@ function Home() {
 	const fetchAllMines = async () => {
 		const allMinesResponse = await fetch('http://localhost:5000/mines');
 		const jsonResponse = await allMinesResponse.json();
-		// console.log(jsonResponse);
 		setMinesData(jsonResponse);
 	};
 

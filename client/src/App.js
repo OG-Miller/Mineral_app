@@ -1,12 +1,10 @@
-// import logo from './logo.svg';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import SidebarLeft from './SidebarLeft/SidebarLeft';
 import SidebarRight from './SidebarRight/SidebarRight';
 import Home from './Home/Home';
 import Header from './Header/Header';
-import Footer from './Footer/Footer';
 import ReadMine from './ReadMine/ReadMine';
 import { DataProvider } from './MinesContext';
 import NewMine from './NewMine/NewMine';
@@ -28,7 +26,6 @@ const App = () => {
 						</Switch>
 						<SidebarRight />
 					</div>
-					{/* <Footer /> */}
 				</div>
 			</Router>
 		</DataProvider>

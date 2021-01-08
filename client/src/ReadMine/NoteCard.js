@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './noteCard.css';
 
 const NoteCard = props => {
-	const [testButton, setTestButton] = useState('');
-
-	useEffect(() => {
-		//  console.log(testButton);
-	}, [testButton]);
-
 	function passedEdit(e) {
 		props.passEdit(e);
 	}
@@ -16,13 +10,13 @@ const NoteCard = props => {
 		props.passDelete(e);
 	}
 
-	function passedAdd(e) {
-		props.passAdd(e);
-	}
-
 	return (
 		<div>
 			<div className='noteCard'>
+				<div className='NoteCardColorAndIdWrapper'>
+					<span className='colorIndicator__NoteCard' />
+					{/* <span className='noteId'>Note ID: {props._id}</span> */}
+				</div>
 				<h1 className='note-card-title'>{props.title}</h1>
 				<a href={props.link} className='noteLink' target='blank' rel='noreferrer noopener'>
 					{props.link}
@@ -30,7 +24,7 @@ const NoteCard = props => {
 				<span className='noteBody' required>
 					{props.note}
 				</span>
-				<span className='noteId'>Note ID:{props._id}</span>
+				{/* <span className='noteId'>Note ID: {props._id}</span> */}
 				<div className='noteCardControls'>
 					<span value='edit' onClick={passedEdit}>
 						Edit

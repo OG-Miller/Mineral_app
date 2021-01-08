@@ -38,3 +38,12 @@
 		color: #ecc113;
 	} */
 }
+
+.noteControl-right {
+	display: flex;
+	align-items: center;
+	padding-right: 25px;
+	cursor: pointer;
+	padding-top: 8px;
+	position: fixed;
+}

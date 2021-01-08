@@ -51,10 +51,17 @@
 }
 
 .add-note-button {
+	background-color: #c7c5c5;
+}
+.add-note-button:hover {
 	background-color: rgb(53, 131, 56);
 }
 
 .cancel-editnote-button {
+	background-color: #c7c5c5;
+}
+
+.cancel-editnote-button:hover {
 	background-color: rgb(131, 53, 53);
 }
 
@@ -74,3 +81,18 @@
   font-family: 'IBM Plex Sans', sans-serif;
   cursor: alias;
 }  */
+
+/* .add-note-button:hover,
+.update-note-button:hover,
+.cancel-editnote-button:hover{
+  background-color: #c7c5c5;
+} */
+.colorIndicator__NewNoteForm {
+	padding-bottom: 10px;
+	margin-left: 18px;
+	background-color: #209ef2;
+	margin-bottom: 10px;
+	height: 8px;
+	width: 60px;
+	border-radius: 15px;
+}

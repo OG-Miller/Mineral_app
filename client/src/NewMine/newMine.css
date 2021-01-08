@@ -5,6 +5,8 @@
 	flex: 7;
 	flex-direction: column;
 	padding: 10px;
+	/* padding-left: 5px */
+	min-width: 300px;
 }
 
 @media (min-width: 736px) {
@@ -17,7 +19,7 @@
 	background-color: rgb(30, 36, 43);
 	margin: 20px;
 	margin-top: 10px;
-	padding: 30px;
+	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	min-height: fit-content;
@@ -85,4 +87,14 @@ form {
 .create-mine-button:hover,
 .update-mine-button:hover {
 	background-color: rgb(53, 131, 56);
+}
+.colorIndicator__NewMine {
+	padding-bottom: 10px;
+	margin-left: 18px;
+	background-color: #f29220;
+	margin-bottom: 5px;
+	margin-top: 8px;
+	height: 8px;
+	width: 60px;
+	border-radius: 15px;
 }

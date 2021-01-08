@@ -1,18 +1,16 @@
 .noteCard {
-	/* background: linear-gradient(45deg, #f1f0f0,#7deeb6 ); */
 	background-color: rgb(30, 36, 43);
 	margin: 20px;
 	margin-left: 30;
 	margin-right: 30;
 	padding: 30px;
-
+	padding-top: 25;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: auto;
 	overflow: auto;
 	word-wrap: break-word;
 	box-shadow: 1px 1px 1px rgb(12, 16, 24);
-	/* border-left: 2px solid rgb(42, 135, 211); */
 	border-radius: 15px;
 }
 
@@ -31,7 +29,9 @@
 	display: flex;
 	/* margin-bottom: 10px; */
 	margin-left: 15px;
-	align-self: flex-end;
+	margin-top: 4px;
+	padding-right: 10px;
+	/* align-self: flex-end; */
 	color: #c7c5c5;
 	font-size: small;
 	font-weight: normal;
@@ -41,7 +41,7 @@
 
 .noteLink {
 	margin-bottom: 10px;
-	color: #ed890f;
+	color: #729ca5;
 	font-size: large;
 	font-weight: normal;
 	text-decoration: inherit;
@@ -68,9 +68,22 @@
 	cursor: pointer;
 }
 
-/* .test{
-  display: flex;
-  background-color: white;
-  padding-top: 10px;
-  padding-bottom: 10px;
-} */
+.NoteCardColorAndIdWrapper {
+	display: flex;
+}
+
+/* .NoteCardColorAndIdWrapper {
+	display: flex;
+	flex-direction: row-reverse; 
+}*/
+
+.colorIndicator__NoteCard {
+	padding-bottom: 10px;
+	background-color: #209ef2;
+	margin-bottom: 10px;
+	height: 8px;
+	width: 60px;
+	border-radius: 15px;
+	margin-left: -1px;
+	/* align-self: flex-end; */
+}

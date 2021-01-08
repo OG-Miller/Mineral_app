@@ -1,21 +1,14 @@
-import { React, useContext, useState, useEffect } from 'react';
+import { React, useContext, useEffect } from 'react';
 import { MinesContext } from '../MinesContext';
 import NoteControls from '../SidebarLeft/NoteControls'; // change this to folder:  sidebarRight
 import './sidebarRight.css';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 
 const SidebarRight = () => {
-	const { showNoteControls, setShowNoteControls } = useContext(MinesContext);
-	// const [showNoteButton, setShowNoteButton] = useState(false);
-	// const [pathMatch, setPathMatch] = useState(false);
-	// const [counter, setCounter] = useState(0);
+	const { setShowNoteControls } = useContext(MinesContext);
 
 	const path = window.location.pathname;
 	const read = '/ReadMine';
-
-	useEffect(() => {
-		// setCounter(1);
-	}, []);
 
 	return (
 		<div className='sidebarRight'>

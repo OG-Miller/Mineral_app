@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import './sidebarLeft.css';
 import { MinesContext } from '../MinesContext';
 import SidebarOption from './SidebarOption';
@@ -7,17 +7,19 @@ import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 import NoteControls from './NoteControls';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 
-console.log(window.innerWidth);
-
 const SidebarLeft = () => {
 	const { counter, setCounter } = useContext(MinesContext);
 
 	return (
-		<div count={counter} onClick={() => setCounter(1)} className='sidebarLeft'>
+		<div
+			count={counter}
+			onClick={() => setCounter(prevCount => !prevCount)}
+			className='sidebarLeft'
+		>
 			<div className='optionHolder'>
-				<SidebarOption className='home' name='home' Icon={Home} page={'/'} title='Home' />
+				<SidebarOption className='home' name={'homeButton'} Icon={Home} page={'/'} title='Home' />
 				<SidebarOption
-					name='add'
+					name={'newMineButton'}
 					className='addMine'
 					Icon={AddOutlinedIcon}
 					page={'/NewMine'}

@@ -15,7 +15,6 @@ const ReadMine = () => {
 		setFromEdit,
 	} = useContext(MinesContext);
 	const [notesArray, setNotesArray] = useState([]);
-	const [showNotes, setShowNotes] = useState(false);
 	const [noteId, setNoteId] = useState('');
 	const [fromEditNote, setFromEditNote] = useState(false);
 	const [specificNote, setSpecificNote] = useState({});
@@ -25,11 +24,6 @@ const ReadMine = () => {
 	}, []);
 
 	useEffect(() => {
-		setShowNotes(true);
-	}, [notesArray]);
-
-	useEffect(() => {
-		console.log('noteID: ', noteId);
 		getIndex();
 	}, [noteId]);
 
@@ -41,8 +35,7 @@ const ReadMine = () => {
 		console.log(specificMine);
 	};
 
-	// DELETE ENTIRE MINE
-	const handleDelete = () => {
+	const DeleteMine = () => {
 		if (window.confirm('This will delete the entire mine, including notes')) {
 			let options = {
 				method: 'DELETE',
@@ -53,12 +46,9 @@ const ReadMine = () => {
 			fetch(`http://localhost:5000/${mineId}`, options);
 		}
 	};
-	// this should .then() link back to /home
 
-	// EDIT MINE MAIN CARD
-	const handleEdit = () => {
+	const EditMine = () => {
 		setFromEdit(true);
-		setShowNotes(true);
 	};
 
 	const getIndex = () => {
@@ -68,10 +58,9 @@ const ReadMine = () => {
 			}
 		});
 		setSpecificNote(notesArray[gotIndex]);
-		console.log(gotIndex);
 	};
 
-	// NOTES - EDIT
+	// EDIT A NOTE
 	const passedEdit = _id => {
 		setNoteId(_id);
 		console.log(noteId);
@@ -81,7 +70,7 @@ const ReadMine = () => {
 		}, 100);
 	};
 
-	// NOTES - DELETE
+	// DELETE A NOTE
 	const passedDelete = _id => {
 		if (window.confirm('Delete note?')) {
 			const noteIdent = _id;
@@ -97,17 +86,14 @@ const ReadMine = () => {
 			});
 		}
 	};
-	// NOTES - ADD
-	const passedAdd = _id => {
-		// setFromEdit(!fromEditNote);
-		setFromEditNote(false);
-		setNoteId(_id);
-		setNoteFormIsShow(true);
-	};
 
 	return (
-		<div value={mineId} className='read-main'>
+		<div value={mineId} className='mine'>
 			<div className='card'>
+				<div className='MineCardColorAndIdWrapper'>
+					<span className='colorIndicator__MineCard' />
+					{/* <span className='mine-id'>Mine ID: {mineId}</span> */}
+				</div>
 				<h1 className='mine-card-title'>{specificMine.title}</h1>
 				<a
 					href={specificMine.bookmarkLink}
@@ -125,15 +111,15 @@ const ReadMine = () => {
 				</span>
 				<div className='item-details'>
 					<span className='created-at'>Created: {specificMine.createdAt}</span>
-					<span className='mine-id'>Mine ID:{mineId}</span>
+					{/* <span className='mine-id'>Mine ID:{mineId}</span> */}
 				</div>
 				<div className='controls'>
 					<Link to={'/NewMine'}>
-						<span onClick={handleEdit} className='edit-button'>
+						<span onClick={EditMine} className='edit-button'>
 							Edit
 						</span>
 					</Link>
-					<span onClick={handleDelete} className='delete-button'>
+					<span onClick={DeleteMine} className='delete-button'>
 						Delete Mine
 					</span>
 				</div>
@@ -142,7 +128,6 @@ const ReadMine = () => {
 			{notesArray.map(({ testPropper, _id, link, title, note }) => {
 				return (
 					<NoteCard
-						passAdd={e => passedAdd(_id)}
 						passDelete={e => passedDelete(_id)} //this will delete the note -> delete the note from db
 						passEdit={e => passedEdit(_id)} //this will open NewNoteForm with previous data inserted and editable -> http patch the data on db
 						key={_id}

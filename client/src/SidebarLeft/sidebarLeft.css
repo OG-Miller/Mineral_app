@@ -31,6 +31,7 @@
 /* small mode */
 @media (max-width: 735px) {
 	.optionHolder {
+		align-content: space-around;
 		display: flex;
 		margin-bottom: 18px;
 	}
@@ -63,12 +64,13 @@
 		position: fixed;
 	}
 
-	.noteControlsLeft {
+	/* .noteControlsLeft {
 		visibility: hidden;
 		position: static;
 		background: hotpink;
 		margin-top: 15px;
-	}
+		
+	} */
 }
 
 @media (min-width: 736px) {
@@ -76,7 +78,8 @@
 		display: none;
 	}
 }
-/* 
-.position-test {
-	position: fixed;
-} */
+
+.notebutton-left {
+	padding-left: 15px;
+	padding-top: 4px;
+}
