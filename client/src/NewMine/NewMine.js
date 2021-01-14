@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './newMine.css';
 import { Link } from 'react-router-dom';
 import { MinesContext } from '../MinesContext';
@@ -11,6 +12,7 @@ const NewMine = () => {
 	const [newMineTitle, setNewMineTitle] = useState(fromEdit ? specificMine.title : '');
 	const [newMineBody, setNewMineBody] = useState(fromEdit ? specificMine.body : '');
 	const [newMineLink, setNewMineLink] = useState(fromEdit ? specificMine.bookmarkLink : '');
+	const history = useHistory();
 
 	useEffect(() => {
 		setCounter(prevCount => !prevCount);
@@ -39,25 +41,27 @@ const NewMine = () => {
 
 	const handleCreateMine = e => {
 		if (newMineLink.length < 1) {
-			alert('You forgot to add a link');
+			alert('You forgot a link :D');
+			e.preventDefault();
+		} else {
+			const newMineData = {
+				title: newMineTitle,
+				body: newMineBody,
+				bookmarkLink: newMineLink,
+				mineStatus: mineStatus,
+			};
+
+			let options = {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(newMineData),
+			};
+
+			fetch('http://localhost:5000', options);
+			console.log(newMineData);
 		}
-		const newMineData = {
-			title: newMineTitle,
-			body: newMineBody,
-			bookmarkLink: newMineLink,
-			mineStatus: mineStatus,
-		};
-
-		let options = {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(newMineData),
-		};
-
-		fetch('http://localhost:5000', options);
-		console.log(newMineData);
 	};
 
 	return (
@@ -65,20 +69,20 @@ const NewMine = () => {
 			<div className='new-mine-form'>
 				<span className='colorIndicator__NewMine' />
 				<input
+					maxLength='99'
 					className='title-input'
 					placeholder='Title'
 					defaultValue={fromEdit ? specificMine.title : null}
-					required
 					onChange={e => setNewMineTitle(e.target.value)}
 				></input>
 				<input
 					className='link-input'
 					placeholder='Link'
 					defaultValue={fromEdit ? specificMine.bookmarkLink : null}
-					required
+					required={true}
 					onChange={e => setNewMineLink(e.target.value)}
 				></input>
-				<textarea
+				<input
 					placeholder='Note'
 					label='Initial thoughts'
 					type='text'
@@ -86,7 +90,7 @@ const NewMine = () => {
 					maxLength='600'
 					defaultValue={fromEdit ? specificMine.body : null}
 					onChange={e => setNewMineBody(e.target.value)}
-				></textarea>
+				></input>
 
 				{/* <form>
           <label for="mining">  Mining  </label>
@@ -108,21 +112,23 @@ const NewMine = () => {
           
         
         </form> */}
-				{fromEdit ? (
-					<Link to={'/'} style={{ textDecoration: 'none' }}>
-						<span className='update-mine-button' onClick={handleUpdateMine}>
-							{' '}
-							Update Mine{' '}
-						</span>
-					</Link>
-				) : (
-					<Link to={'/'} style={{ textDecoration: 'none' }}>
-						<span className='create-mine-button' onClick={handleCreateMine}>
-							{' '}
-							Create Mine{' '}
-						</span>
-					</Link>
-				)}
+				<div className='NewMine__controls'>
+					{fromEdit ? (
+						<Link to={'/'} style={{ textDecoration: 'none' }}>
+							<span className='NewMine__controls--update' onClick={handleUpdateMine}>
+								{' '}
+								Update Mine{' '}
+							</span>
+						</Link>
+					) : (
+						<Link to={'/'} style={{ textDecoration: 'none' }}>
+							<span className='NewMine__controls--create' onClick={handleCreateMine}>
+								{' '}
+								Create Mine{' '}
+							</span>
+						</Link>
+					)}
+				</div>
 			</div>
 		</div>
 	);

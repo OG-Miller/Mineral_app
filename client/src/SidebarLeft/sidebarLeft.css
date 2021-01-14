@@ -12,19 +12,10 @@
 	align-content: space-around;
 }
 
-.noteControlsLeft {
-	display: flex;
-	align-items: center;
-	padding-right: 25px;
-	cursor: pointer;
-	padding-top: 10px;
-}
-
-/* @media (min-width: 736px) {
-	.noteControlsLeft {
-		visibility: hidden;
-		position: static;
-		background: hotpink;
+/* mobile */
+/* @media (min-width: 50px) {
+	.sidebarLeft {
+		display: none;
 	}
 } */
 
@@ -34,16 +25,21 @@
 		align-content: space-around;
 		display: flex;
 		margin-bottom: 18px;
+		padding-top: 120px;
 	}
 	.sidebarLeft {
 		display: flex;
 	}
-	.home .addMine,
-	.noteControlsLeft {
+	.home .addMine {
 		position: fixed;
 	}
-	.noteControlsLeft {
-		padding-top: 25px;
+}
+
+/* small mode */
+@media (max-width: 735px) {
+	.newNote__Button--left {
+		display: flex;
+		padding-top: 12px;
 	}
 }
 
@@ -62,24 +58,13 @@
 	}
 	.optionHolder {
 		position: fixed;
+		padding-top: 120px;
 	}
-
-	/* .noteControlsLeft {
-		visibility: hidden;
-		position: static;
-		background: hotpink;
-		margin-top: 15px;
-		
-	} */
 }
 
+/* big mode */
 @media (min-width: 736px) {
-	.notebutton-left {
+	.newNote__Button--left {
 		display: none;
 	}
-}
-
-.notebutton-left {
-	padding-left: 15px;
-	padding-top: 4px;
 }

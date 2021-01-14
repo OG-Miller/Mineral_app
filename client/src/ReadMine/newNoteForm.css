@@ -1,10 +1,21 @@
 .new-note-form {
+	background-color: rgb(30, 36, 43);
 	color: rgb(42, 135, 211);
 	margin: 25px;
 	padding: 30px;
 	display: flex;
 	flex-direction: column;
+	border-radius: 15px;
 }
+/* .new-note-form {
+	background-color: rgb(30, 36, 43);
+	margin: 20px;
+	margin-top: 10px;
+	padding: 20px;
+	flex-direction: column;
+	min-height: fit-content;
+	border-radius: 15px;
+} */
 
 .link-input,
 .note-input,
@@ -12,10 +23,10 @@
 	background-color: rgb(118, 118, 118);
 	color: black;
 	border: none;
-	padding: 15px;
+	/* padding: 15px;
 	margin-top: 20px;
 	margin-left: 20px;
-	margin-right: 20px;
+	margin-right: 20px; */
 	border-radius: 5px;
 	font-family: monospace;
 	font-size: medium;
@@ -24,11 +35,11 @@
 .note-input {
 	height: 60px;
 	resize: none;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin: 20px;
+	padding: 15px;
 }
 
-.controls-container {
+/* .controls-container {
 	align-content: space-between;
 	flex-direction: row;
 }
@@ -39,7 +50,7 @@
 	margin-left: 20px;
 	text-decoration: none;
 	align-self: center;
-	/* text-decoration: inherit; */
+
 	color: rgb(24, 29, 24);
 	font-size: small;
 	font-weight: bold;
@@ -63,36 +74,54 @@
 
 .cancel-editnote-button:hover {
 	background-color: rgb(131, 53, 53);
-}
-
-/* .update-note-button{
-  background-color:  rgb(53, 131, 56);
-  color:black;
-  margin-left: 20px;
-  text-decoration: none;
-  align-self: center;
-  text-decoration: inherit;
-  color: rgb(24, 29, 24);
-  font-size: small;
-  font-weight: bold;
-  padding: 10px;
-  background-color:  rgb(53, 131, 56);;
-  border-radius: 8px;
-  font-family: 'IBM Plex Sans', sans-serif;
-  cursor: alias;
-}  */
-
-/* .add-note-button:hover,
-.update-note-button:hover,
-.cancel-editnote-button:hover{
-  background-color: #c7c5c5;
 } */
+
 .colorIndicator__NewNoteForm {
 	padding-bottom: 10px;
 	margin-left: 18px;
 	background-color: #209ef2;
 	margin-bottom: 10px;
 	height: 8px;
-	width: 60px;
+	width: 100px;
 	border-radius: 15px;
+}
+
+.NewNoteForm__controls {
+	color: white;
+	display: flex;
+	align-items: baseline;
+	justify-content: right;
+	padding-left: 90px;
+	margin-top: 20px;
+	font-size: 13px;
+	font-family: 'IBM Plex Sans', sans-serif;
+	letter-spacing: 1px;
+	font-size: 15px;
+}
+.NewNoteForm__controls--add,
+.NewNoteForm__controls--edit,
+.NewNoteForm__controls--cancel {
+	text-decoration: none;
+	color: white;
+	font-size: small;
+	font-weight: bold;
+	font-family: 'IBM Plex Sans', sans-serif;
+	padding: 10px;
+	padding-bottom: 8px;
+	border-top: solid 1px grey;
+	margin-left: 20px;
+	cursor: pointer;
+}
+.NewNoteForm__controls--add:hover,
+.NewNoteForm__controls--edit:hover {
+	color: rgb(30, 36, 43);
+	background-color: rgb(182, 179, 179);
+	/* border-top: solid 1px rgb(30, 36, 43); */
+	border-top: solid 1px rgb(182, 179, 179);
+}
+.NewNoteForm__controls--cancel:hover {
+	color: rgb(30, 36, 43);
+	background-color: rgb(172, 65, 65);
+	/* border: solid 1px rgb(30, 36, 43); */
+	border-top: solid 1px rgb(172, 65, 65);
 }

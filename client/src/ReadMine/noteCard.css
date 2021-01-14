@@ -56,7 +56,7 @@
 	line-height: 16pt;
 }
 
-.noteCardControls {
+/* .noteCardControls {
 	display: flex;
 	align-items: baseline;
 	justify-content: space-evenly;
@@ -66,24 +66,65 @@
 	font-family: 'IBM Plex Sans', sans-serif;
 	letter-spacing: 1px;
 	cursor: pointer;
+} */
+
+.NoteCard__controls {
+	color: white;
+	display: flex;
+	align-items: baseline;
+	justify-content: right;
+	padding-left: 90px;
+	margin-top: 20px;
+	font-size: 13px;
+	font-family: 'IBM Plex Sans', sans-serif;
+	letter-spacing: 1px;
+	font-size: 15px;
+}
+.NoteCard__controls--edit,
+.NoteCard__controls--delete {
+	/* justify-self: right; */
+	text-decoration: none;
+	/* color: rgb(24, 29, 24); */
+	color: white;
+	font-size: small;
+	font-weight: bold;
+	font-family: 'IBM Plex Sans', sans-serif;
+	padding: 10px;
+	padding-bottom: 8px;
+	/* background-color: #c7c5c5; */
+	/* background-color: rgb(24, 29, 24); */
+	/* border-radius: 20px; */
+	border-top: solid 1px grey;
+	margin-left: 20px;
+	cursor: pointer;
+}
+
+.NoteCard__controls--edit:hover {
+	color: rgb(30, 36, 43);
+	background-color: rgb(182, 179, 179);
+	/* border-top: solid 1px rgb(30, 36, 43); */
+	border-top: solid 1px rgb(182, 179, 179);
+}
+
+.NoteCard__controls--delete:hover {
+	color: rgb(30, 36, 43);
+	background-color: rgb(172, 65, 65);
+	/* border: solid 1px rgb(30, 36, 43); */
+	border-top: solid 1px rgb(172, 65, 65);
 }
 
 .NoteCardColorAndIdWrapper {
 	display: flex;
 }
 
-/* .NoteCardColorAndIdWrapper {
-	display: flex;
-	flex-direction: row-reverse; 
-}*/
-
 .colorIndicator__NoteCard {
 	padding-bottom: 10px;
 	background-color: #209ef2;
 	margin-bottom: 10px;
-	height: 8px;
-	width: 60px;
-	border-radius: 15px;
+	height: 6px;
+	width: 50px;
+	border-radius: 10px;
+	cursor: pointer;
 	margin-left: -1px;
 	/* align-self: flex-end; */
 }

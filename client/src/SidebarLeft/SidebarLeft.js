@@ -25,9 +25,9 @@ const SidebarLeft = () => {
 					page={'/NewMine'}
 					title='New Mine'
 				/>
-				<div className='notebutton-left'>
+				<div className='newNote__Button--left'>
 					{window.location.pathname === '/ReadMine' && (
-						<NoteControls className='noteControlsLeft' Icon={NoteAddIcon} title='New Note' />
+						<NoteControls Icon={NoteAddIcon} title='New Note' />
 					)}
 				</div>
 			</div>

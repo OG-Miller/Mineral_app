@@ -12,6 +12,7 @@
 	align-items: center;
 	word-wrap: break-word;
 }
+
 /* small mode */
 @media (max-width: 736px) {
 	.sidebar-option {

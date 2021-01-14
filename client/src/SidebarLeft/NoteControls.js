@@ -18,7 +18,7 @@ const NoteControls = props => {
 			onMouseLeave={() => {
 				setFontCol('#c7c5c5');
 			}}
-			className='noteControl-right'
+			className='newNote__Button'
 			onClick={() => setNoteFormIsShow(true)}
 		>
 			<props.Icon className='noteControl-icon' />

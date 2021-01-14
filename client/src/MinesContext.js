@@ -11,6 +11,7 @@ export const DataProvider = props => {
 	const [minesData, setMinesData] = useState([]);
 	const [specificNote, setSpecificNote] = useState({});
 	const [counter, setCounter] = useState(true);
+	const [searchVal, setSearchVal] = useState('');
 
 	return (
 		<MinesContext.Provider
@@ -31,6 +32,8 @@ export const DataProvider = props => {
 				setMinesData,
 				counter,
 				setCounter,
+				searchVal,
+				setSearchVal,
 			}}
 		>
 			{props.children}

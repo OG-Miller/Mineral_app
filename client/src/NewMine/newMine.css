@@ -5,13 +5,13 @@
 	flex: 7;
 	flex-direction: column;
 	padding: 10px;
-	/* padding-left: 5px */
 	min-width: 300px;
 }
 
 @media (min-width: 736px) {
-	.main {
+	.new-mine-main {
 		height: 100%;
+		padding-top: 140px;
 	}
 }
 
@@ -23,10 +23,10 @@
 	display: flex;
 	flex-direction: column;
 	min-height: fit-content;
+	border-radius: 15px;
 	/* box-shadow: 1px 1px 30px 15px rgba(14, 16, 31, 0.377); */
 	/* box-shadow: 1px 1px 1px 0px rgb(33, 33, 33); */
 	/* border: 4px solid  #838281; */
-	border-radius: 15px;
 }
 
 /* this is big mode */
@@ -69,10 +69,10 @@ form {
 	justify-content: space-between;
 }
 
-.create-mine-button,
+/* .create-mine-button,
 .update-mine-button {
 	align-self: center;
-	text-decoration: inherit;
+	text-decoration: none;
 	color: rgb(24, 29, 24);
 	font-size: small;
 	font-weight: bold;
@@ -82,12 +82,12 @@ form {
 	background-color: #c7c5c5;
 	border-radius: 8px;
 	margin-left: 20px;
-}
+} */
 
-.create-mine-button:hover,
+/* .create-mine-button:hover,
 .update-mine-button:hover {
 	background-color: rgb(53, 131, 56);
-}
+} */
 .colorIndicator__NewMine {
 	padding-bottom: 10px;
 	margin-left: 18px;
@@ -97,4 +97,38 @@ form {
 	height: 8px;
 	width: 60px;
 	border-radius: 15px;
+}
+
+.NewMine__controls {
+	color: white;
+	display: flex;
+	align-items: baseline;
+	justify-content: right;
+	padding-left: 90px;
+	margin-top: 20px;
+	font-size: 13px;
+	font-family: 'IBM Plex Sans', sans-serif;
+	letter-spacing: 1px;
+	font-size: 15px;
+}
+.NewMine__controls--update,
+.NewMine__controls--create {
+	text-decoration: none;
+	color: white;
+	font-size: small;
+	font-weight: bold;
+	font-family: 'IBM Plex Sans', sans-serif;
+	padding: 10px;
+	padding-bottom: 8px;
+	border-top: solid 1px grey;
+	margin-left: 20px;
+	cursor: pointer;
+	margin-right: 20px;
+}
+.NewMine__controls--update:hover,
+.NewMine__controls--create:hover {
+	color: rgb(30, 36, 43);
+	background-color: rgb(182, 179, 179);
+	/* border-top: solid 1px rgb(30, 36, 43); */
+	border-top: solid 1px rgb(182, 179, 179);
 }

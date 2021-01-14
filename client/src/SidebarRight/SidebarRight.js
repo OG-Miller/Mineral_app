@@ -12,9 +12,9 @@ const SidebarRight = () => {
 
 	return (
 		<div className='sidebarRight'>
-			{path === read && (
-				<NoteControls className='noteControls-right' Icon={NoteAddIcon} title='New Note' />
-			)}
+			<div className='newNote__Button--right'>
+				{path === read && <NoteControls Icon={NoteAddIcon} title='New Note' />}
+			</div>
 		</div>
 	);
 };

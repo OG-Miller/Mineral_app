@@ -1,28 +1,34 @@
-import React from 'react';
+import { React, useContext } from 'react';
 import './header.css';
-// import logo from '../../src/Mineral-Logo-1-05.png';
-// import logo from "/Users/gavinmiller/Documents/Coding/test_mern/client/src/Mineral-App-blue1-17.png";
-// import logo from "/Users/gavinmiller/Documents/Coding/test_mern/client/src/Mineral-App-Blue-2-20.png";
-// import logo from '../../src/Mineral-App-red2-1git aff8.png';
-// import logo from "/Users/gavinmiller/Documents/Coding/test_mern/client/src/Mineral-reverse-orange-02.png"
-// import logo from "/Users/gavinmiller/Documents/Coding/test_mern/client/src/Mineral-reverse-mark-03.png"
-import logo from "/Users/gavinmiller/Documents/Coding/test_mern/client/src/Mineral-reverse-mark2-05.png"
-
-// import logo from "/Users/gavinmiller/Documents/Coding/test_mern/client/src/Mineral-orange-22.png";
-// import logo from "/Users/gavinmiller/Documents/Coding/test_mern/client/src/Mineral-Logo-orange-22.png";
-
+import logo from '/Users/gavinmiller/Documents/Coding/test_mern/client/src/Mineral-reverse-mark2-05.png';
+import { MinesContext } from '../MinesContext';
+import SearchIcon from '@material-ui/icons/Search';
 
 const Header = () => {
+	const { searchVal, setSearchVal } = useContext(MinesContext);
 
-
-  
-  return(
-    <div className='header'>
-      <img src={logo} alt="Mineral Diamond M logo" />
-
-      
-    </div>
-  )
-}
+	return (
+		<div className='header'>
+			<div className='Header__contents'>
+				<img src={logo} alt='Mineral Diamond M logo' />
+				{window.location.pathname === '/' && (
+					<div className='Header__search'>
+						<SearchIcon
+							// onClick={e => setSearchVal(e.target.value)}
+							className='Header__search--icon'
+						/>
+						<input
+							placeholder='Search mines'
+							className='Header__search--input'
+							onChange={e => {
+								setSearchVal(e.target.value);
+							}}
+						/>
+					</div>
+				)}
+			</div>
+		</div>
+	);
+};
 
 export default Header;

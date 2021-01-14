@@ -27,3 +27,20 @@
 	cursor: pointer;
 	/* padding-top: 12px; 
 } */
+
+/* small mode */
+@media (max-width: 735px) {
+	.newNote__Button {
+		display: flex;
+		position: fixed;
+		padding-left: 12px;
+		word-break: normal;
+	}
+}
+/* big mode */
+@media (min-width: 736px) {
+	.newNote__Button {
+		display: flex;
+		position: fixed;
+	}
+}

@@ -5,18 +5,65 @@
 	text-align: center;
 	padding-top: 0.9vh;
 	height: 110px;
-	position: sticky;
+	position: fixed;
 	width: 100%;
 	top: 0;
 	/* align-items: center; */
 	box-shadow: 1px 1px 3px 4px rgb(23, 28, 34);
+	display: inline-flex;
+	flex-direction: column;
+	align-content: center;
 }
 
+.Header__contents {
+	display: flex;
+	/* align-content: flex-end; */
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
 img {
 	width: 110px;
-	display: flex;
+	width: 125px;
+	/* display: flex; */
 	position: flex-start;
 	padding-left: 20px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	margin-right: 20%vw;
+}
+.Header__search {
+	display: flex;
+
+	background-color: rgb(41, 50, 60);
+	margin-top: 45px;
+	/* margin-left: 90px; */
+	margin-right: 15px;
+	align-self: right;
+	height: 40px;
+	width: 180px;
+	align-items: center;
+	/* justify-content: right; */
+	outline: none;
+}
+
+.Header__search--input {
+	color: white;
+	background-color: rgb(41, 50, 60);
+	text-decoration: none;
+	align-content: flex-end;
+	padding: 5px;
+	margin-left: 10px;
+	height: 20px;
+	width: 100px;
+	border: none;
+	outline: none;
+	font-size: small;
+	font-family: 'IBM Plex Sans', sans-serif;
+	letter-spacing: 1px;
+	border-bottom: solid 1px rgb(182, 179, 179);
+}
+
+.Header__search--icon {
+	color: white;
 }

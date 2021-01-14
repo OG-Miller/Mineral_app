@@ -1,8 +1,9 @@
 .sidebarRight {
 	display: none;
-	/* flex:1.5; */
+	/* flex: 1.5; */
 	flex-direction: column;
 	height: 100vh;
+	/* width: 160px; */
 }
 
 @media (min-width: 736px) {
@@ -12,38 +13,37 @@
 		height: 100vh;
 		/* background-image:linear-gradient( #dad8d8, white); */
 		background-color: rgb(41, 50, 60);
-		/* min-width: fit-content; */
-		width: 160px;
+		/* background-color: hotpink; */
+		min-width: 160px;
+		/* width: 160px; */
 		float: right;
 		padding-left: 15px;
 		padding-right: 15px;
-		padding-top: 20px;
+		padding-top: 30px;
 		justify-items: center;
+		flex: 1;
 	}
 
-	/* .gem-cabinet {
-		color:   rgb(41, 50, 60);
-		color: rgb(197, 205, 214);
+	/* color: rgb(197, 205, 214);
 		text-decoration: none;
 		padding-right: 20px;
 		padding-left: 20px;
 		font-size: small;
 		font-family: 'IBM Plex Sans', sans-serif;
 		letter-spacing: 1px;
-  }
-  
-  
+
+	}  */
 
 	.gem-cabinet :hover {
 		color: #ecc113;
-	} */
+	}
 }
 
-.noteControl-right {
+.newNote__Button--right {
 	display: flex;
-	align-items: center;
-	padding-right: 25px;
-	cursor: pointer;
-	padding-top: 8px;
-	position: fixed;
+	padding-top: 120px;
+}
+
+.test {
+	min-width: 30vw;
 }

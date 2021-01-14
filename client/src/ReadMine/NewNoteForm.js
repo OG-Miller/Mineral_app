@@ -11,8 +11,16 @@ const NewNoteForm = props => {
 	const noteFormRef = useRef();
 
 	useEffect(() => {
+		props.fetchSpecificMineProp();
+	}, [props.bodyInput]);
+
+	useEffect(() => {
 		noteFormRef.current.scrollIntoView({ behavior: 'smooth' });
 	}, []);
+
+	useEffect(() => {
+		console.log(noteData);
+	}, [noteData]);
 
 	const handleAddNote = () => {
 		props.setFromEditNoteProp(false);
@@ -40,7 +48,9 @@ const NewNoteForm = props => {
 		}
 	};
 
-	const handleUpdateNote = () => {
+	const handleUpdateNote = e => {
+		// props.setNotesArrayProp(props.notesArrayProp);
+		props.setFromEditNoteProp(false);
 		const specNoteId = props.noteIdProp;
 		console.log('specNoteId : ' + specNoteId);
 
@@ -64,7 +74,6 @@ const NewNoteForm = props => {
 	};
 
 	const handleCancel = () => {
-		props.setNotesArrayProp(props.notesArrayProp);
 		setNoteFormIsShow(false);
 		props.setFromEditNoteProp(false);
 	};
@@ -73,17 +82,19 @@ const NewNoteForm = props => {
 		<div className='new-note-form' ref={noteFormRef}>
 			<span className='colorIndicator__NewNoteForm' />
 			<input
+				maxLength='99'
 				className='title-input'
 				placeholder='Title'
 				name='titleInput'
-				defaultValue={props.titleInput}
+				defaultValue={titleData}
 				onChange={e => setTitleData(e.target.value)}
 			/>
 			<input
+				maxLength='200'
 				className='link-input'
 				placeholder='Link'
 				name='linkInput'
-				defaultValue={props.linkInput}
+				defaultValue={linkData}
 				onChange={e => setLinkData(e.target.value)}
 			/>
 			<textarea
@@ -96,17 +107,17 @@ const NewNoteForm = props => {
 				maxLength='600'
 			></textarea>
 
-			<div className='controls-container'>
+			<div className='NewNoteForm__controls'>
 				{!props.fromEditNoteProp ? (
-					<span className='add-note-button' onClick={handleAddNote}>
+					<span className='NewNoteForm__controls--add' onClick={handleAddNote}>
 						{props.addButtonVal}
 					</span>
 				) : (
-					<span className='update-note-button' onClick={handleUpdateNote}>
+					<span className='NewNoteForm__controls--edit' onClick={handleUpdateNote}>
 						{props.updateButtonVal}
 					</span>
 				)}
-				<span className='cancel-editnote-button' onClick={handleCancel}>
+				<span className='NewNoteForm__controls--cancel' onClick={handleCancel}>
 					Cancel
 				</span>
 			</div>

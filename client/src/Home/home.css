@@ -1,11 +1,12 @@
 .home-main {
 	background-color: rgb(41, 50, 60);
 	align-content: center;
-	display: inline-flex;
+	display: flex;
 	flex: 7;
 	flex-direction: column;
 	padding: 10px;
-	padding-top: 20px;
+	padding-bottom: 0;
+	padding-top: 150px;
 	height: fit-content;
 }
 
@@ -14,9 +15,8 @@
 		height: fit-content;
 	}
 }
-
-.bookmarkLink {
-	color: gray;
-	font-size: medium;
-	font-weight: lighter;
+@media (max-width: 735px) {
+	.home-main {
+		padding-top: 0;
+	}
 }
