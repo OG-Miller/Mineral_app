@@ -34,7 +34,6 @@ img {
 }
 .Header__search {
 	display: flex;
-
 	background-color: rgb(41, 50, 60);
 	margin-top: 45px;
 	/* margin-left: 90px; */
@@ -48,7 +47,7 @@ img {
 }
 
 .Header__search--input {
-	color: white;
+	color: #f29220;
 	background-color: rgb(41, 50, 60);
 	text-decoration: none;
 	align-content: flex-end;
@@ -59,9 +58,14 @@ img {
 	border: none;
 	outline: none;
 	font-size: small;
+	font-weight: bolder;
 	font-family: 'IBM Plex Sans', sans-serif;
 	letter-spacing: 1px;
 	border-bottom: solid 1px rgb(182, 179, 179);
+}
+.Header__search--input::placeholder {
+	color: grey;
+	opacity: 1;
 }
 
 .Header__search--icon {

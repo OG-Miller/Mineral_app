@@ -40,9 +40,15 @@ const NewMine = () => {
 	};
 
 	const handleCreateMine = e => {
-		if (newMineLink.length < 1) {
-			alert('You forgot a link :D');
+		if (newMineTitle.length < 1) {
+			alert('Title and link required');
 			e.preventDefault();
+		} else if (
+			newMineLink.slice(0, 12) !== 'https://www.' &&
+			newMineLink.slice(0, 11) !== 'http://www.'
+		) {
+			e.preventDefault();
+			alert('Please enter a valid link with http(s)://www.');
 		} else {
 			const newMineData = {
 				title: newMineTitle,
@@ -67,19 +73,21 @@ const NewMine = () => {
 	return (
 		<div className='new-mine-main'>
 			<div className='new-mine-form'>
-				<span className='colorIndicator__NewMine' />
+				{/* <span className='colorIndicator__NewMine' /> */}
 				<input
 					maxLength='99'
 					className='title-input'
 					placeholder='Title'
 					defaultValue={fromEdit ? specificMine.title : null}
 					onChange={e => setNewMineTitle(e.target.value)}
+					onInput={e => setNewMineTitle(e.target.value)}
 				></input>
 				<input
 					className='link-input'
 					placeholder='Link'
 					defaultValue={fromEdit ? specificMine.bookmarkLink : null}
 					required={true}
+					onInput={e => setNewMineTitle(e.target.value)}
 					onChange={e => setNewMineLink(e.target.value)}
 				></input>
 				<input
@@ -89,6 +97,7 @@ const NewMine = () => {
 					className='body-input'
 					maxLength='600'
 					defaultValue={fromEdit ? specificMine.body : null}
+					onInput={e => setNewMineTitle(e.target.value)}
 					onChange={e => setNewMineBody(e.target.value)}
 				></input>
 

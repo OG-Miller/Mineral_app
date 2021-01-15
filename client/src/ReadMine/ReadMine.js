@@ -106,9 +106,8 @@ const ReadMine = () => {
 	return (
 		<div value={mineId} className='mine'>
 			<div className='card'>
+				{/* <span onClick={() => setShowMineId(!showMineId)} className='colorIndicator__MineCard' /> */}
 				<div className='MineCardColorAndIdWrapper'>
-					<span onClick={() => setShowMineId(!showMineId)} className='colorIndicator__MineCard' />
-
 					{showMineId && <span className='mine-id'>Mine ID: {mineId}</span>}
 				</div>
 				<h1 className='mine-card-title'>{specificMine.title}</h1>
@@ -120,7 +119,7 @@ const ReadMine = () => {
 				>
 					{specificMine.bookmarkLink}
 				</a>
-				<p className='body'>{specificMine.body} </p>
+				{specificMine.body && <p className='body'>{specificMine.body} </p>}
 				<span className='updated-at'>
 					{specificMine.createdAt !== specificMine.updatedAt &&
 						showMineId &&
@@ -143,8 +142,8 @@ const ReadMine = () => {
 						Delete Mine
 					</span>
 				</div>
+				{/* <hr className='border' /> */}
 			</div>
-
 			{notesArray.map(({ _id, link, title, note }) => {
 				return (
 					<NoteCard

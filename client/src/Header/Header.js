@@ -13,10 +13,7 @@ const Header = () => {
 				<img src={logo} alt='Mineral Diamond M logo' />
 				{window.location.pathname === '/' && (
 					<div className='Header__search'>
-						<SearchIcon
-							// onClick={e => setSearchVal(e.target.value)}
-							className='Header__search--icon'
-						/>
+						<SearchIcon className='Header__search--icon' />
 						<input
 							placeholder='Search mines'
 							className='Header__search--input'

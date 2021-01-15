@@ -22,11 +22,17 @@ const NewNoteForm = props => {
 		console.log(noteData);
 	}, [noteData]);
 
-	const handleAddNote = () => {
+	const handleAddNote = e => {
 		props.setFromEditNoteProp(false);
-
-		if (noteData.length < 1 && titleData.length < 1 && linkData.length < 1) {
+		if (noteData.length < 1 || titleData.length < 1) {
+			e.preventDefault();
 			alert('Note must contain data');
+		} else if (
+			linkData.slice(0, 12) !== 'https://www.' &&
+			linkData.slice(0, 11) !== 'http://www.'
+		) {
+			e.preventDefault();
+			alert('Please enter a valid link with http(s)://www.');
 		} else {
 			const updatedNoteData = {
 				title: titleData,
@@ -49,28 +55,37 @@ const NewNoteForm = props => {
 	};
 
 	const handleUpdateNote = e => {
-		// props.setNotesArrayProp(props.notesArrayProp);
-		props.setFromEditNoteProp(false);
 		const specNoteId = props.noteIdProp;
-		console.log('specNoteId : ' + specNoteId);
+		// console.log('specNoteId : ' + specNoteId);
+		if (noteData.length < 1 || titleData.length < 1) {
+			e.preventDefault();
+			alert('Note must contain data');
+		} else if (
+			linkData.slice(0, 12) !== 'https://www.' &&
+			linkData.slice(0, 11) !== 'http://www.'
+		) {
+			e.preventDefault();
+			alert('Please enter a valid link with http(s)://www.');
+		} else {
+			props.setFromEditNoteProp(false);
+			const newNoteData = {
+				title: titleData,
+				link: linkData,
+				note: noteData,
+			};
 
-		const newNoteData = {
-			title: titleData,
-			link: linkData,
-			note: noteData,
-		};
-
-		let options = {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(newNoteData),
-		};
-		fetch(`http://localhost:5000/${mineId}/update/${specNoteId}`, options).then(() => {
-			props.fetchSpecificMineProp();
-		});
-		setNoteFormIsShow(false);
+			let options = {
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(newNoteData),
+			};
+			fetch(`http://localhost:5000/${mineId}/update/${specNoteId}`, options).then(() => {
+				props.fetchSpecificMineProp();
+			});
+			setNoteFormIsShow(false);
+		}
 	};
 
 	const handleCancel = () => {
@@ -80,7 +95,7 @@ const NewNoteForm = props => {
 
 	return (
 		<div className='new-note-form' ref={noteFormRef}>
-			<span className='colorIndicator__NewNoteForm' />
+			{/* <span className='colorIndicator__NewNoteForm' /> */}
 			<input
 				maxLength='99'
 				className='title-input'
@@ -88,6 +103,7 @@ const NewNoteForm = props => {
 				name='titleInput'
 				defaultValue={titleData}
 				onChange={e => setTitleData(e.target.value)}
+				onInput={e => setLinkData(e.target.value)}
 			/>
 			<input
 				maxLength='200'
@@ -95,10 +111,12 @@ const NewNoteForm = props => {
 				placeholder='Link'
 				name='linkInput'
 				defaultValue={linkData}
+				onInput={e => setLinkData(e.target.value)}
 				onChange={e => setLinkData(e.target.value)}
 			/>
 			<textarea
 				defaultValue={props.bodyInput}
+				onInput={e => setLinkData(e.target.value)}
 				onChange={e => setNoteData(e.target.value)}
 				name='noteInput'
 				placeholder='Body'
