@@ -4,12 +4,12 @@ export const MinesContext = createContext();
 
 export const DataProvider = props => {
 	const [mineId, setMineId] = useState('');
-	const [specificMine, setSpecificMine] = useState({});
-	const [noteFormIsShow, setNoteFormIsShow] = useState(false);
+	const [selectedMine, setSelectedMine] = useState({});
+	const [noteFormVisible, setNoteFormVisible] = useState(false);
 	const [fromEdit, setFromEdit] = useState(false);
 	const [fromEditNote, setFromEditNote] = useState(false);
 	const [minesData, setMinesData] = useState([]);
-	const [specificNote, setSpecificNote] = useState({});
+	const [selectedNote, setSelectedNote] = useState({});
 	const [counter, setCounter] = useState(true);
 	const [searchVal, setSearchVal] = useState('');
 
@@ -18,24 +18,23 @@ export const DataProvider = props => {
 			value={{
 				mineId,
 				setMineId,
-				specificMine,
-				setSpecificMine,
-				noteFormIsShow,
-				setNoteFormIsShow,
+				selectedMine,
+				setSelectedMine,
+				noteFormVisible,
+				setNoteFormVisible,
 				fromEdit,
 				setFromEdit,
 				fromEditNote,
 				setFromEditNote,
-				specificNote,
-				setSpecificNote,
+				selectedNote,
+				setSelectedNote,
 				minesData,
 				setMinesData,
 				counter,
 				setCounter,
 				searchVal,
 				setSearchVal,
-			}}
-		>
+			}}>
 			{props.children}
 		</MinesContext.Provider>
 	);

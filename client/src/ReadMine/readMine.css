@@ -27,28 +27,21 @@
 	word-wrap: break-word;
 	min-height: fit-content;
 	box-shadow: 1px 1px 1px rgb(12, 16, 24);
-	/* border-radius: 15px 15px 15px 15px; */
-	/* border-radius: 0 25px 25px 0; */
-	/* border: solid 1px #b5b5b5; */
 	border-left: solid 2px #f29220;
-	/* border-bottom: solid 1px #f29220; */
 }
 
 .mine-card-title {
-	/* background-color: rgb(75, 76, 77); */
 	color: white;
 	font-size: x-large;
 	margin-bottom: 5px;
 	margin-top: 0px;
-	/* font-family: 'Titillium Web', sans-serif; */
 	font-family: 'IBM Plex Sans', sans-serif;
 	letter-spacing: 1px;
 	font-size: large;
+	line-height: 18pt;
 	font-weight: bolder;
 	padding: 3px;
 	padding-bottom: 10px;
-
-	/* border-left: 1px solid grey; */
 }
 
 .bookmarkLink {
@@ -103,19 +96,11 @@ a {
 	padding-bottom: 20px;
 	font-size: medium;
 	color: white;
-	/* font-family: 'Titillium Web', sans-serif; */
 	font-family: 'IBM Plex Sans', sans-serif;
 	letter-spacing: 1px;
 	line-height: 16pt;
 }
 
-/* .border {
-	margin: 0px;
-	/* color: rgb(222, 222, 222); */
-/* border-top: 1px solid #f29220; */
-/* border-bottom: 3px solid #f29220; */
-/* border-block-color: #f29220; */
-/* }   */
 .controls {
 	color: white;
 	display: flex;
@@ -130,18 +115,13 @@ a {
 }
 .edit-button,
 .delete-button {
-	/* justify-self: right; */
 	text-decoration: none;
-	/* color: rgb(24, 29, 24); */
 	color: white;
 	font-size: small;
 	font-weight: bold;
 	font-family: 'IBM Plex Sans', sans-serif;
 	padding: 10px;
 	padding-bottom: 8px;
-	/* background-color: #c7c5c5; */
-	/* background-color: rgb(24, 29, 24); */
-	/* border-radius: 20px; */
 	border-top: solid 1px grey;
 	margin-left: 20px;
 	cursor: pointer;
@@ -151,32 +131,19 @@ a {
 .edit-button:hover {
 	color: rgb(30, 36, 43);
 	background-color: rgb(182, 179, 179);
-	/* border-top: solid 1px rgb(30, 36, 43); */
 	border-top: solid 1px rgb(182, 179, 179);
 }
 
 .delete-button:hover {
 	color: rgb(30, 36, 43);
 	background-color: rgb(172, 65, 65);
-	/* border: solid 1px rgb(30, 36, 43); */
 	border-top: solid 1px rgb(172, 65, 65);
 }
 
 .MineCardColorAndIdWrapper {
 	display: flex;
 }
-/* .colorIndicator__MineCard {
-	padding-bottom: 10px;
-	background-color: #f29220;
-	margin-bottom: 10px;
-	margin-left: -1px;
-	height: 6px;
-	width: 50px;
-	border-radius: 10px;
-	cursor: pointer;
 
-	
-} */
 @media (max-width: 735px) {
 	.mine {
 		padding-top: 0;

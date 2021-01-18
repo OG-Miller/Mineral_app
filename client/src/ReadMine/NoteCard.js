@@ -2,27 +2,20 @@ import { React, useState } from 'react';
 import './noteCard.css';
 
 const NoteCard = props => {
-	const [showNoteId, setShowNoteId] = useState(false);
-	function passedEdit(e) {
-		props.passEdit(e);
+	const [showNoteId] = useState(false);
+
+	function editNote(e) {
+		props.editNote(e);
 	}
 
-	function passedDelete(e) {
-		props.passDelete(e);
+	function deleteNote(e) {
+		props.deleteNote(e);
 	}
 
 	return (
 		<div>
 			<div className='noteCard'>
 				<div className='NoteCardColorAndIdWrapper'>
-					{/* <span
-						onClick={() => {
-							setShowNoteId(!showNoteId);
-						}}
-						// onMouseOver={() => setShowNoteId(true)}
-						// onMouseLeave={() => setShowNoteId(false)}
-						className='colorIndicator__NoteCard'
-					/> */}
 					{showNoteId && <span className='noteId'>Note ID: {props._id}</span>}
 				</div>
 				{props.title && <h1 className='note-card-title'>{props.title}</h1>}
@@ -36,12 +29,11 @@ const NoteCard = props => {
 						{props.note}
 					</span>
 				)}
-				{/* <span className='noteId'>Note ID: {props._id}</span> */}
 				<div className='NoteCard__controls'>
-					<span value='edit' className='NoteCard__controls--edit' onClick={passedEdit}>
+					<span value='edit' className='NoteCard__controls--edit' onClick={editNote}>
 						Edit
 					</span>
-					<span value='delete' className='NoteCard__controls--delete' onClick={passedDelete}>
+					<span value='delete' className='NoteCard__controls--delete' onClick={deleteNote}>
 						Delete Note
 					</span>
 				</div>

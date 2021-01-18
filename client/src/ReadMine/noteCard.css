@@ -42,7 +42,7 @@
 
 .noteLink {
 	margin-top: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 	color: #729ca5;
 	font-size: large;
 	font-weight: normal;
@@ -53,6 +53,7 @@
 
 .noteBody {
 	color: white;
+	margin-top: 20px;
 	margin-bottom: 20px;
 	/* font-family: 'Titillium Web', sans-serif; */
 	font-family: 'IBM Plex Sans', sans-serif;

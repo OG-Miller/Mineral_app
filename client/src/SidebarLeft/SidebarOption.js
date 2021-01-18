@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { MinesContext } from '../MinesContext';
 
 const SidebarOption = ({ Icon, page, title, name }) => {
-	const { setFromEdit, setNoteFormIsShow } = useContext(MinesContext);
+	const { setFromEdit, setNoteFormVisible } = useContext(MinesContext);
 	const [fontCol, setFontCol] = useState('#c7c5c5');
 
 	const handleClick = () => {
-		setNoteFormIsShow(false);
+		setNoteFormVisible(false);
 		setFromEdit(false);
 	};
 
@@ -26,8 +26,7 @@ const SidebarOption = ({ Icon, page, title, name }) => {
 					setFontCol('#c7c5c5');
 				}}
 				className='link'
-				to={page}
-			>
+				to={page}>
 				<div style={styles} className='sidebar-option' onClick={handleClick}>
 					{Icon && <Icon className='icon' />}
 					<h4>{title}</h4>

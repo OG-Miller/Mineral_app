@@ -1,18 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 import './newMine.css';
 import { Link } from 'react-router-dom';
 import { MinesContext } from '../MinesContext';
 
 const NewMine = () => {
-	const { specificMine, fromEdit, minesData, setMinesData, counter, setCounter } = useContext(
-		MinesContext
-	);
-	const [mineStatus] = useState(fromEdit ? specificMine.mineStatus : '');
-	const [newMineTitle, setNewMineTitle] = useState(fromEdit ? specificMine.title : '');
-	const [newMineBody, setNewMineBody] = useState(fromEdit ? specificMine.body : '');
-	const [newMineLink, setNewMineLink] = useState(fromEdit ? specificMine.bookmarkLink : '');
-	const history = useHistory();
+	const { selectedMine, fromEdit, minesData, setMinesData, setCounter } = useContext(MinesContext);
+	const [mineStatus] = useState(fromEdit ? selectedMine.mineStatus : '');
+	const [newMineTitle, setNewMineTitle] = useState(fromEdit ? selectedMine.title : '');
+	const [newMineBody, setNewMineBody] = useState(fromEdit ? selectedMine.body : '');
+	const [newMineLink, setNewMineLink] = useState(fromEdit ? selectedMine.bookmarkLink : '');
 
 	useEffect(() => {
 		setCounter(prevCount => !prevCount);
@@ -25,7 +21,7 @@ const NewMine = () => {
 			bookmarkLink: newMineLink,
 			mineStatus: mineStatus,
 		};
-		const specMineId = specificMine._id;
+		const specMineId = selectedMine._id;
 
 		setMinesData([...minesData, updatedMineData]);
 
@@ -43,10 +39,7 @@ const NewMine = () => {
 		if (newMineTitle.length < 1) {
 			alert('Title and link required');
 			e.preventDefault();
-		} else if (
-			newMineLink.slice(0, 12) !== 'https://www.' &&
-			newMineLink.slice(0, 11) !== 'http://www.'
-		) {
+		} else if (newMineLink.slice(0, 6) !== 'https:' && newMineLink.slice(0, 5) !== 'http:') {
 			e.preventDefault();
 			alert('Please enter a valid link with http(s)://www.');
 		} else {
@@ -73,54 +66,30 @@ const NewMine = () => {
 	return (
 		<div className='new-mine-main'>
 			<div className='new-mine-form'>
-				{/* <span className='colorIndicator__NewMine' /> */}
 				<input
 					maxLength='99'
 					className='title-input'
 					placeholder='Title'
-					defaultValue={fromEdit ? specificMine.title : null}
+					defaultValue={fromEdit ? selectedMine.title : null}
 					onChange={e => setNewMineTitle(e.target.value)}
-					onInput={e => setNewMineTitle(e.target.value)}
-				></input>
+					onInput={e => setNewMineTitle(e.target.value)}></input>
 				<input
 					className='link-input'
 					placeholder='Link'
-					defaultValue={fromEdit ? specificMine.bookmarkLink : null}
+					defaultValue={fromEdit ? selectedMine.bookmarkLink : null}
 					required={true}
-					onInput={e => setNewMineTitle(e.target.value)}
-					onChange={e => setNewMineLink(e.target.value)}
-				></input>
+					onInput={e => setNewMineLink(e.target.value)}
+					onChange={e => setNewMineLink(e.target.value)}></input>
 				<input
 					placeholder='Note'
 					label='Initial thoughts'
 					type='text'
 					className='body-input'
-					maxLength='600'
-					defaultValue={fromEdit ? specificMine.body : null}
-					onInput={e => setNewMineTitle(e.target.value)}
-					onChange={e => setNewMineBody(e.target.value)}
-				></input>
+					maxLength='2000'
+					defaultValue={fromEdit ? selectedMine.body : null}
+					onInput={e => setNewMineBody(e.target.value)}
+					onChange={e => setNewMineBody(e.target.value)}></input>
 
-				{/* <form>
-          <label for="mining">  Mining  </label>
-          <input type="radio" name="option"  value="digging" checked={ fromEdit ?  mineStatus === "digging" : null}
-          onChange={(e) => setMineStatus("digging")}
-          name="digging"
-          />
-          
-          <label for="cutting">  Cutting  </label>
-          <input type="radio" name="option"  value="cutting" checked={ fromEdit ? mineStatus === "cutting" : null}
-          onChange={(e) => setMineStatus("cutting")}
-          name="cutting"
-          />
-          <label for="polished">Polished  </label>
-          <input type="radio" name="option" value="polished" checked={ fromEdit ? mineStatus === "polished" : null}
-          onChange={(e) => setMineStatus("polished")}
-          name="polished"
-          />
-          
-        
-        </form> */}
 				<div className='NewMine__controls'>
 					{fromEdit ? (
 						<Link to={'/'} style={{ textDecoration: 'none' }}>

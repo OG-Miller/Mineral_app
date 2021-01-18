@@ -50,11 +50,11 @@ function Home() {
 						createdAt={mine.createdAt}
 						title={mine.title}
 						bookmarkLink={mine.bookmarkLink}
-						// bookmarkLink={
-						// 	mine.bookmarkLink.length < 40
-						// 		? mine.bookmarkLink
-						// 		: mine.bookmarkLink.substr(8, 40) + '...'
-						// }
+						bookmarkLink={
+							mine.bookmarkLink.length < 40
+								? mine.bookmarkLink
+								: mine.bookmarkLink.substr(8, 40) + '...'
+						}
 					/>
 				))}
 		</div>

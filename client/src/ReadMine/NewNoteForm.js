@@ -3,7 +3,7 @@ import './newNoteForm.css';
 import { MinesContext } from '../MinesContext';
 
 const NewNoteForm = props => {
-	const { mineId, setNoteFormIsShow } = useContext(MinesContext);
+	const { mineId, setNoteFormVisible } = useContext(MinesContext);
 	const [linkData, setLinkData] = useState(props.linkInput);
 	const [titleData, setTitleData] = useState(props.titleInput);
 	const [noteData, setNoteData] = useState(props.bodyInput);
@@ -11,7 +11,7 @@ const NewNoteForm = props => {
 	const noteFormRef = useRef();
 
 	useEffect(() => {
-		props.fetchSpecificMineProp();
+		props.fetchSelectedMine();
 	}, [props.bodyInput]);
 
 	useEffect(() => {
@@ -23,13 +23,15 @@ const NewNoteForm = props => {
 	}, [noteData]);
 
 	const handleAddNote = e => {
-		props.setFromEditNoteProp(false);
-		if (noteData.length < 1 || titleData.length < 1) {
+		props.setFromEditNote(false);
+		if (noteData.length < 1 && titleData.length < 1) {
 			e.preventDefault();
 			alert('Note must contain data');
 		} else if (
-			linkData.slice(0, 12) !== 'https://www.' &&
-			linkData.slice(0, 11) !== 'http://www.'
+			linkData.length > 0 &&
+			linkData.slice(0, 6) !== 'https:' &&
+			linkData.length > 0 &&
+			linkData.slice(0, 5) !== 'http:'
 		) {
 			e.preventDefault();
 			alert('Please enter a valid link with http(s)://www.');
@@ -48,26 +50,22 @@ const NewNoteForm = props => {
 				body: JSON.stringify(updatedNoteData),
 			};
 			fetch(`http://localhost:5000/${mineId}/add`, options).then(() => {
-				setNoteFormIsShow(false);
-				props.fetchSpecificMineProp();
+				setNoteFormVisible(false);
+				props.fetchSelectedMine();
 			});
 		}
 	};
 
 	const handleUpdateNote = e => {
-		const specNoteId = props.noteIdProp;
-		// console.log('specNoteId : ' + specNoteId);
+		const specNoteId = props.noteId;
 		if (noteData.length < 1 || titleData.length < 1) {
 			e.preventDefault();
 			alert('Note must contain data');
-		} else if (
-			linkData.slice(0, 12) !== 'https://www.' &&
-			linkData.slice(0, 11) !== 'http://www.'
-		) {
+		} else if (linkData.slice(0, 6) !== 'https:' && linkData.slice(0, 5) !== 'http:') {
 			e.preventDefault();
-			alert('Please enter a valid link with http(s)://www.');
+			alert('Please enter a valid link with http(s)');
 		} else {
-			props.setFromEditNoteProp(false);
+			props.setFromEditNote(false);
 			const newNoteData = {
 				title: titleData,
 				link: linkData,
@@ -82,15 +80,15 @@ const NewNoteForm = props => {
 				body: JSON.stringify(newNoteData),
 			};
 			fetch(`http://localhost:5000/${mineId}/update/${specNoteId}`, options).then(() => {
-				props.fetchSpecificMineProp();
+				props.fetchSelectedMine();
 			});
-			setNoteFormIsShow(false);
+			setNoteFormVisible(false);
 		}
 	};
 
 	const handleCancel = () => {
-		setNoteFormIsShow(false);
-		props.setFromEditNoteProp(false);
+		setNoteFormVisible(false);
+		props.setFromEditNote(false);
 	};
 
 	return (
@@ -103,7 +101,7 @@ const NewNoteForm = props => {
 				name='titleInput'
 				defaultValue={titleData}
 				onChange={e => setTitleData(e.target.value)}
-				onInput={e => setLinkData(e.target.value)}
+				onInput={e => setTitleData(e.target.value)}
 			/>
 			<input
 				maxLength='200'
@@ -116,17 +114,16 @@ const NewNoteForm = props => {
 			/>
 			<textarea
 				defaultValue={props.bodyInput}
-				onInput={e => setLinkData(e.target.value)}
+				onInput={e => setNoteData(e.target.value)}
 				onChange={e => setNoteData(e.target.value)}
 				name='noteInput'
 				placeholder='Body'
 				type='text'
 				className='note-input'
-				maxLength='600'
-			></textarea>
+				maxLength='2000'></textarea>
 
 			<div className='NewNoteForm__controls'>
-				{!props.fromEditNoteProp ? (
+				{!props.fromEditNote ? (
 					<span className='NewNoteForm__controls--add' onClick={handleAddNote}>
 						{props.addButtonVal}
 					</span>

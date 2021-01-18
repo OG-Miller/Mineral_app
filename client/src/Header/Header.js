@@ -5,7 +5,7 @@ import { MinesContext } from '../MinesContext';
 import SearchIcon from '@material-ui/icons/Search';
 
 const Header = () => {
-	const { searchVal, setSearchVal } = useContext(MinesContext);
+	const { setSearchVal } = useContext(MinesContext);
 
 	return (
 		<div className='header'>

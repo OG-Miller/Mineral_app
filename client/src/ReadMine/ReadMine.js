@@ -9,27 +9,27 @@ import { Link } from 'react-router-dom';
 const ReadMine = () => {
 	const {
 		mineId,
-		specificMine,
-		setSpecificMine,
-		noteFormIsShow,
-		setNoteFormIsShow,
+		selectedMine,
+		setSelectedMine,
+		noteFormVisible,
+		setNoteFormVisible,
 		setFromEdit,
 	} = useContext(MinesContext);
 	const [notesArray, setNotesArray] = useState([]);
 	const [noteId, setNoteId] = useState('');
 	const [fromEditNote, setFromEditNote] = useState(false);
-	const [specificNote, setSpecificNote] = useState({});
-	const [showMineId, setShowMineId] = useState(false);
+	const [selectedNote, setSelectedNote] = useState({});
+	const [showMineId] = useState(false);
 	const history = useHistory();
 
 	useEffect(() => {
-		fetchSpecificMine();
+		fetchSelectedMine();
 	}, []);
 
 	useEffect(() => {
-		console.log(specificMine);
-		fetchSpecificMine();
-	}, [specificNote]);
+		console.log(selectedMine);
+		fetchSelectedMine();
+	}, [selectedNote]);
 
 	useEffect(() => {
 		getIndex();
@@ -40,13 +40,11 @@ const ReadMine = () => {
 		console.log(fromEditNote);
 	}, [fromEditNote]);
 
-	const fetchSpecificMine = async () => {
-		const specificMineResponse = await fetch(`http://localhost:5000/${mineId}`);
-		const jsonResponse = await specificMineResponse.json();
+	const fetchSelectedMine = async () => {
+		const selectedMineResponse = await fetch(`http://localhost:5000/${mineId}`);
+		const jsonResponse = await selectedMineResponse.json();
 		setNotesArray(jsonResponse.notes);
-		setSpecificMine(jsonResponse);
-		// console.log(specificMine);
-		// console.log(fromEditNote);
+		setSelectedMine(jsonResponse);
 	};
 
 	const getIndex = () => {
@@ -55,12 +53,12 @@ const ReadMine = () => {
 				return true;
 			}
 		});
-		setSpecificNote(notesArray[gotIndex]);
+		setSelectedNote(notesArray[gotIndex]);
 	};
 
 	const DeleteMine = () => {
 		if (window.confirm('This will delete the entire mine, including notes')) {
-			history.push('/');
+			history.push('/'); //////////////////////////check this still works
 			let options = {
 				method: 'DELETE',
 				headers: {
@@ -76,18 +74,18 @@ const ReadMine = () => {
 	};
 
 	// EDIT A NOTE
-	const passedEdit = _id => {
+	const editNote = _id => {
 		console.log(mineId);
 		setNoteId(_id);
 		console.log(noteId);
 		setFromEditNote(true);
 		setTimeout(() => {
-			setNoteFormIsShow(true);
+			setNoteFormVisible(true);
 		}, 100);
 	};
 
 	// DELETE A NOTE
-	const passedDelete = _id => {
+	const deleteNote = _id => {
 		if (window.confirm('Delete note?')) {
 			const noteIdent = _id;
 
@@ -106,31 +104,25 @@ const ReadMine = () => {
 	return (
 		<div value={mineId} className='mine'>
 			<div className='card'>
-				{/* <span onClick={() => setShowMineId(!showMineId)} className='colorIndicator__MineCard' /> */}
 				<div className='MineCardColorAndIdWrapper'>
 					{showMineId && <span className='mine-id'>Mine ID: {mineId}</span>}
 				</div>
-				<h1 className='mine-card-title'>{specificMine.title}</h1>
+				<h1 className='mine-card-title'>{selectedMine.title}</h1>
 				<a
-					href={specificMine.bookmarkLink}
+					href={selectedMine.bookmarkLink}
 					className='bookmarkLink'
 					target='blank'
-					rel='noreferrer noopener'
-				>
-					{specificMine.bookmarkLink}
+					rel='noreferrer noopener'>
+					{selectedMine.bookmarkLink}
 				</a>
-				{specificMine.body && <p className='body'>{specificMine.body} </p>}
+				{selectedMine.body && <p className='body'>{selectedMine.body} </p>}
 				<span className='updated-at'>
-					{specificMine.createdAt !== specificMine.updatedAt &&
+					{selectedMine.createdAt !== selectedMine.updatedAt &&
 						showMineId &&
-						'   Updated: ' + specificMine.updatedAt}
+						'   Updated: ' + selectedMine.updatedAt}
 				</span>
 				<div className='item-details'>
-					<span className='created-at'>
-						Created:{' ' + specificMine.createdAt}
-						{/* {specificMine.createdAt.substr(0, 10) + ' ' + specificMine.createdAt.substr(11, 8)} */}
-					</span>
-					{/* <span className='mine-id'>Mine ID:{mineId}</span> */}
+					<span className='created-at'>Created:{' ' + selectedMine.createdAt}</span>
 				</div>
 				<div className='controls'>
 					<Link to={'/NewMine'}>
@@ -147,8 +139,8 @@ const ReadMine = () => {
 			{notesArray.map(({ _id, link, title, note }) => {
 				return (
 					<NoteCard
-						passDelete={e => passedDelete(_id)} //this will delete the note -> delete the note from db
-						passEdit={e => passedEdit(_id)} //this will open NewNoteForm with previous data inserted and editable -> http patch the data on db
+						deleteNote={e => deleteNote(_id)} //this will delete the note -> delete the note from db
+						editNote={e => editNote(_id)} //this will open NewNoteForm with previous data inserted and editable -> http patch the data on db
 						key={_id}
 						_id={_id}
 						link={link}
@@ -158,32 +150,32 @@ const ReadMine = () => {
 				);
 			})}
 
-			{noteFormIsShow && fromEditNote ? (
+			{noteFormVisible && fromEditNote ? (
 				<NewNoteForm
-					setSpecificMineProp={setSpecificMine}
+					setSelectedMine={setSelectedMine}
 					key={noteId}
-					fetchSpecificMineProp={fetchSpecificMine}
-					noteIdProp={noteId}
-					setFromEditNoteProp={setFromEditNote}
-					fromEditNoteProp={fromEditNote}
-					notesArrayProp={notesArray}
-					setNotesArrayProp={setNotesArray}
-					linkInput={specificNote.link}
-					setLinkInput={setSpecificNote}
-					titleInput={specificNote.title}
-					bodyInput={specificNote.note}
+					fetchSelectedMine={fetchSelectedMine}
+					noteId={noteId}
+					setFromEditNote={setFromEditNote}
+					fromEditNote={fromEditNote}
+					notesArray={notesArray}
+					setNotesArray={setNotesArray}
+					linkInput={selectedNote.link}
+					setLinkInput={setSelectedNote}
+					titleInput={selectedNote.title}
+					bodyInput={selectedNote.note}
 					updateButtonVal={'Update Note'}
 				/>
 			) : null}
 
-			{noteFormIsShow === true && fromEditNote === false ? (
+			{noteFormVisible === true && fromEditNote === false ? (
 				<NewNoteForm
-					noteIdProp={noteId}
-					fetchSpecificMineProp={fetchSpecificMine}
-					setFromEditNoteProp={setFromEditNote}
-					fromEditNoteProp={fromEditNote}
-					notesArrayProp={notesArray}
-					setNotesArrayProp={setNotesArray}
+					noteId={noteId}
+					fetchSelectedMine={fetchSelectedMine}
+					setFromEditNote={setFromEditNote}
+					fromEditNote={fromEditNote}
+					notesArray={notesArray}
+					setNotesArray={setNotesArray}
 					addButtonVal={'Add New Note'}
 					bodyInput={''}
 					linkInput={''}

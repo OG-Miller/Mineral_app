@@ -3,7 +3,7 @@ import { MinesContext } from '../MinesContext';
 import './noteControls.css';
 
 const NoteControls = props => {
-	const { setNoteFormIsShow } = useContext(MinesContext);
+	const { setNoteFormVisible } = useContext(MinesContext);
 	const [fontCol, setFontCol] = useState('#c7c5c5');
 
 	const styles = {
@@ -19,8 +19,7 @@ const NoteControls = props => {
 				setFontCol('#c7c5c5');
 			}}
 			className='newNote__Button'
-			onClick={() => setNoteFormIsShow(true)}
-		>
+			onClick={() => setNoteFormVisible(true)}>
 			<props.Icon className='noteControl-icon' />
 			<h4 className='noteControl-title'>{props.title}</h4>
 		</div>

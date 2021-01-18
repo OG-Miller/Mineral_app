@@ -3,21 +3,19 @@ const express = require('express');
 const router = express.Router();
 const Mine = require('../models/Mine');
 
-// gets back all the mines ** WORKING AND IN USE!
+// gets back all the MINES
 router.get('/mines', async (req, res) => {
 	try {
 		const mines = await Mine.find(); // append .limit etc to not return every mine
 		console.log(mines);
 		res.json(mines);
-
-		// console.log("mines here: " + mines);///test
 	} catch (err) {
 		res.json({ message: err });
 	}
 	return;
 });
 
-//find specific mine  - ** WORKING AND IN USE!
+//find specific MINE
 router.get('/:mineId', async (req, res) => {
 	try {
 		const mine = await Mine.findById(req.params.mineId); //we can use the Model attributes to search/filter
@@ -28,7 +26,7 @@ router.get('/:mineId', async (req, res) => {
 	}
 });
 
-// creates a mine ** WORKING AND IN USE!
+// creates a MINE
 router.post('/', async (req, res) => {
 	const mine = new Mine({
 		title: req.body.title,
@@ -44,7 +42,7 @@ router.post('/', async (req, res) => {
 	}
 });
 
-//delete entire mine ** WORKING AND IN USE!
+//delete entire MINE
 router.delete('/:mineId', async (req, res) => {
 	try {
 		const deletedMine = await Mine.deleteOne({ _id: req.params.mineId });
@@ -54,7 +52,7 @@ router.delete('/:mineId', async (req, res) => {
 	}
 });
 
-// delete a specific note by id ** WORKING AND IN USE!
+// delete a specific NOTE by id
 router.patch('/del/:mineId/:noteIdent', async (req, res) => {
 	try {
 		const deletedNote = await Mine.updateOne(
@@ -67,7 +65,7 @@ router.patch('/del/:mineId/:noteIdent', async (req, res) => {
 	}
 });
 
-//update a MINE - WORKING AND IN USE!
+//update a MINE
 router.patch('/:specMineId', async (req, res) => {
 	try {
 		const updatedMine = await Mine.updateOne(
@@ -87,7 +85,7 @@ router.patch('/:specMineId', async (req, res) => {
 	}
 });
 
-//add note to notes array ** WORKING AND IN USE!
+//add NOTE to notes array
 router.patch('/:mineId/add', async (req, res) => {
 	try {
 		const addedNote = await Mine.updateOne(
@@ -111,7 +109,7 @@ router.patch('/:mineId/add', async (req, res) => {
 	}
 });
 
-//update specific note WORKING AND IN USE!!!
+//update specific NOTE
 router.patch('/:mineId/update/:specNoteId', async (req, res) => {
 	try {
 		const updatedMine = await Mine.updateOne(
