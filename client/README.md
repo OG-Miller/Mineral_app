@@ -2,7 +2,7 @@
 
 Mineral is an ongoing project which was built using the MERN stack.
 It allows the user to save a bookmark link, "a mine", below which they can save a paragraph or so from the website, allowing them to remember the reason why they saved the link. 
-Mineral can therefore be seen as a store for ideas in progess and with the ability to save many notes within each "mine", the user can keep a record of how their thoughts have developed on any particular subject.
+Mineral can therefore be seen as a place to store ideas in progess and with the ability to save many notes within each "mine", the user can keep a record of how their thoughts have developed on any particular topic.
 
 Check out the demo video below.
 https://user-images.githubusercontent.com/66015262/104952431-bcbe9200-59c4-11eb-9a5b-65ee7aed5d4d.mp4
