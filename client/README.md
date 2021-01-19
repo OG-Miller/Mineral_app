@@ -7,6 +7,11 @@ Mineral can therefore be seen as a place to store ideas in progess and with the 
 Check out the demo video below.
 https://user-images.githubusercontent.com/66015262/104952431-bcbe9200-59c4-11eb-9a5b-65ee7aed5d4d.mp4
 
+
+-------
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
