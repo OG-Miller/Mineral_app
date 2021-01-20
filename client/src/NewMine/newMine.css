@@ -47,10 +47,8 @@
 	margin-top: 20px;
 	margin-left: 20px;
 	margin-right: 20px;
-	/* border-radius: 5px; */
 	font-family: monospace;
 	font-size: medium;
-	/* box-shadow: 0px 0px 5px 1px rgb(18, 21, 26); */
 }
 
 .body-input {
@@ -70,25 +68,6 @@ form {
 	justify-content: space-between;
 }
 
-/* .create-mine-button,
-.update-mine-button {
-	align-self: center;
-	text-decoration: none;
-	color: rgb(24, 29, 24);
-	font-size: small;
-	font-weight: bold;
-	font-family: 'IBM Plex Sans', sans-serif;
-	padding: 10px;
-	padding-bottom: 8px;
-	background-color: #c7c5c5;
-	border-radius: 8px;
-	margin-left: 20px;
-} */
-
-/* .create-mine-button:hover,
-.update-mine-button:hover {
-	background-color: rgb(53, 131, 56);
-} */
 .colorIndicator__NewMine {
 	padding-bottom: 10px;
 	margin-left: 18px;
@@ -126,10 +105,10 @@ form {
 	cursor: pointer;
 	margin-right: 20px;
 }
+
 .NewMine__controls--update:hover,
 .NewMine__controls--create:hover {
 	color: rgb(30, 36, 43);
 	background-color: rgb(182, 179, 179);
-	/* border-top: solid 1px rgb(30, 36, 43); */
 	border-top: solid 1px rgb(182, 179, 179);
 }

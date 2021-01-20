@@ -1,14 +1,11 @@
 .header {
-	/* background-color: #f4976c; */
 	background-color: rgb(41, 50, 60);
-	/* background-image:linear-gradient(-90deg, #d8d8da, white); */
 	text-align: center;
 	padding-top: 0.9vh;
 	height: 110px;
 	position: fixed;
 	width: 100%;
 	top: 0;
-	/* align-items: center; */
 	box-shadow: 1px 1px 3px 4px rgb(23, 28, 34);
 	display: inline-flex;
 	flex-direction: column;
@@ -17,20 +14,19 @@
 
 .Header__contents {
 	display: flex;
-	/* align-content: flex-end; */
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
 }
+
 img {
 	width: 110px;
 	width: 125px;
-	/* display: flex; */
 	position: flex-start;
 	padding-left: 20px;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	margin-right: 20%vw;
+	margin-right: 20%;
 }
 .Header__search {
 	display: flex;
