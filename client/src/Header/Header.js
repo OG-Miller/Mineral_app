@@ -21,7 +21,7 @@ const Header = () => {
 								setSearchVal(e.target.value);
 							}}
 						/>
-					</div>
+					</div> //This search bar should be a separate component in case we want to move it, right?
 				)}
 			</div>
 		</div>

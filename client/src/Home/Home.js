@@ -12,7 +12,6 @@ function Home() {
 			fetchAllMines();
 		}, 300);
 	}, []);
-
 	const fetchAllMines = async () => {
 		const allMinesResponse = await fetch('http://localhost:5000/mines');
 		const jsonResponse = await allMinesResponse.json();

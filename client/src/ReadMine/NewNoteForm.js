@@ -61,7 +61,11 @@ const NewNoteForm = props => {
 		if (noteData.length < 1 || titleData.length < 1) {
 			e.preventDefault();
 			alert('Note must contain data');
-		} else if (linkData.slice(0, 6) !== 'https:' && linkData.slice(0, 5) !== 'http:') {
+		} else if (
+			linkData.length > 0 &&
+			linkData.slice(0, 6) !== 'https:' &&
+			linkData.slice(0, 5) !== 'http:'
+		) {
 			e.preventDefault();
 			alert('Please enter a valid link with http(s)');
 		} else {

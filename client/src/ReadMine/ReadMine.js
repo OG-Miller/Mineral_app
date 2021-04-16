@@ -22,23 +22,23 @@ const ReadMine = () => {
 	const [showMineId] = useState(false);
 	const history = useHistory();
 
-	useEffect(() => {
-		fetchSelectedMine();
-	}, []);
+	// useEffect(() => {
+	// 	console.log(mineId);
+	// }, [mineId]);
 
+	// This gets the correct mine from database on page load & on dependency
 	useEffect(() => {
-		console.log(selectedMine);
 		fetchSelectedMine();
-	}, [selectedNote]);
+	}, [selectedMine]);
 
 	useEffect(() => {
 		getIndex();
 	}, [noteId]);
 
-	useEffect(() => {
-		console.log('fromEditNote');
-		console.log(fromEditNote);
-	}, [fromEditNote]);
+	// useEffect(() => {
+	// 	// console.log(selectedMine);
+	// 	fetchSelectedMine();
+	// }, [selectedMine]);
 
 	const fetchSelectedMine = async () => {
 		const selectedMineResponse = await fetch(`http://localhost:5000/${mineId}`);
@@ -56,9 +56,9 @@ const ReadMine = () => {
 		setSelectedNote(notesArray[gotIndex]);
 	};
 
-	const DeleteMine = () => {
+	const deleteMine = () => {
 		if (window.confirm('This will delete the entire mine, including notes')) {
-			history.push('/'); //////////////////////////check this still works
+			history.push('/');
 			let options = {
 				method: 'DELETE',
 				headers: {
@@ -69,7 +69,7 @@ const ReadMine = () => {
 		}
 	};
 
-	const EditMine = () => {
+	const editMine = () => {
 		setFromEdit(true);
 	};
 
@@ -126,11 +126,11 @@ const ReadMine = () => {
 				</div>
 				<div className='controls'>
 					<Link to={'/NewMine'}>
-						<span onClick={EditMine} className='edit-button'>
+						<span onClick={editMine} className='edit-button'>
 							Edit
 						</span>
 					</Link>
-					<span onClick={DeleteMine} className='delete-button'>
+					<span onClick={deleteMine} className='delete-button'>
 						Delete Mine
 					</span>
 				</div>

@@ -63,10 +63,10 @@ hr {
 	margin-bottom: 25px;
 }
 
-form {
+/* form {
 	align-self: center;
 	justify-content: space-between;
-}
+} */
 
 .colorIndicator__NewMine {
 	padding-bottom: 10px;
@@ -90,6 +90,9 @@ form {
 	font-family: 'IBM Plex Sans', sans-serif;
 	letter-spacing: 1px;
 	font-size: 15px;
+}
+button {
+	all: unset;
 }
 .NewMine__controls--update,
 .NewMine__controls--create {

@@ -65,7 +65,7 @@ const NewMine = () => {
 
 	return (
 		<div className='new-mine-main'>
-			<div className='new-mine-form'>
+			<form className='new-mine-form'>
 				<input
 					maxLength='99'
 					className='title-input'
@@ -93,21 +93,21 @@ const NewMine = () => {
 				<div className='NewMine__controls'>
 					{fromEdit ? (
 						<Link to={'/'} style={{ textDecoration: 'none' }}>
-							<span className='NewMine__controls--update' onClick={handleUpdateMine}>
+							<button className='NewMine__controls--update' onClick={handleUpdateMine}>
 								{' '}
 								Update Mine{' '}
-							</span>
+							</button>
 						</Link>
 					) : (
 						<Link to={'/'} style={{ textDecoration: 'none' }}>
-							<span className='NewMine__controls--create' onClick={handleCreateMine}>
+							<button className='NewMine__controls--create' onClick={handleCreateMine}>
 								{' '}
 								Create Mine{' '}
-							</span>
+							</button>
 						</Link>
 					)}
 				</div>
-			</div>
+			</form>
 		</div>
 	);
 };

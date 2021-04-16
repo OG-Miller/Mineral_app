@@ -12,10 +12,9 @@ const SidebarLeft = () => {
 
 	return (
 		<div
-			count={counter}
+			count={counter} // counter is used to refresh component
 			onClick={() => setCounter(prevCount => !prevCount)}
-			className='sidebarLeft'
-		>
+			className='sidebarLeft'>
 			<div className='optionHolder'>
 				<SidebarOption className='home' name={'homeButton'} Icon={Home} page={'/'} title='Home' />
 				<SidebarOption
